@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 public class GUI {
     public GUI() {
         JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton button = new JButton("CLick Me");
 
