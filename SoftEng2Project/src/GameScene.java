@@ -1,14 +1,24 @@
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class GameScene extends JPanel {
     public GameScene(){
         JPanel GameScene = new JPanel();
-        add(new JLabel("Game Scene"));
+        setLayout(new GridLayout(5,3));
+        add(new JLabel("Select your category"));
 
-        MenuButton menuButton = new MenuButton("Menu","Main Menu");
-        add(menuButton);
+        MenuButton historyButton = new MenuButton("History","History Scene");
+        MenuButton scienceButton = new MenuButton("Science", "Science Scene");
+        MenuButton entertainmentButton = new MenuButton("Entertainment", "Entertainment Scene");
+
+
+        add(historyButton);
+        add(scienceButton);
+        add(entertainmentButton);
+
     }
+
 }
