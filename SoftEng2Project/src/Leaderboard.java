@@ -5,8 +5,6 @@ public class Leaderboard {
 
     //Assuming that only 10 scores will be tracked total
     public String[][] getScores() {
-        
-
         String[][] scores = new String[10][2];
         String[] tempScore;
         //Use BufferedReader to read each line from the leaderboard file
