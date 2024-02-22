@@ -4,7 +4,7 @@ public class Leaderboard {
     private static final String FILE_PATH = "scores.txt";
 
     //Assuming that only 10 scores will be tracked total
-    public String[][] getScores() {
+    public static String[][] getScores() {
         String[][] scores = new String[10][2];
         String[] tempScore;
         //Use BufferedReader to read each line from the leaderboard file
@@ -78,7 +78,7 @@ public class Leaderboard {
     public static void main(String[] args) {
         Leaderboard test = new Leaderboard();
         test.addNewScore("Riley", 1);
-        //test.getScores();
+        test.getScores();
     }
 }
 
