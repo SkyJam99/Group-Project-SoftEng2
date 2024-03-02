@@ -48,7 +48,7 @@ public class LeaderboardScene extends JPanel {
         });
 
 
-        updateScores();
+        leaderboardText.setText(updateScores());
         add(new JPanel());
 
         labelPanel.add(title);
@@ -69,16 +69,18 @@ public class LeaderboardScene extends JPanel {
 
     }
     //method for displaying the scores from the text file
-    public void updateScores() {
+    public String updateScores() {
         //using rileys leaderboard code
         String[][] scores = Leaderboard.getScores();
         //string builder is a tool to concatenate strings together;
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i<scores.length; i++) {
+        for (int i = 0; i<scores.length; i++) {
             String[] score = scores[i];
             sb.append(score[0]).append(" ").append(score[1]).append("\n");
         }
         //setting leaderboard to the text area
-        leaderboardText.setText(sb.toString());
+        //leaderboardText.setText(sb.toString());
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 }

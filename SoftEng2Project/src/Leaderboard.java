@@ -1,7 +1,20 @@
 import java.io.*;
 
+import javax.swing.GroupLayout.Group;
+
 public class Leaderboard {
-    private static final String FILE_PATH = "scores.txt";
+    private static final String FILE_PATH = System.getProperty("user.dir") + "\\SoftEng2Project\\scores.txt";
+
+
+    public static void testScores() {
+        File f = new File(FILE_PATH);
+        System.out.println("Attempting to write to: " + f.getAbsolutePath());
+        try(FileWriter writer = new FileWriter(FILE_PATH, false)){
+            writer.write("Test");
+        } catch (IOException e) {
+            System.out.println("Error while writing to file");
+        }
+    }
 
     //Assuming that only 10 scores will be tracked total
     public static String[][] getScores() {
@@ -13,6 +26,7 @@ public class Leaderboard {
             String line;
             for(int i = 0; i < 10; i++){
                 line = reader.readLine();
+                System.out.println(line);
                 tempScore = line.split(" ");
                 scores[i][0] = tempScore[0];
                 scores[i][1] = tempScore[1];
@@ -31,7 +45,7 @@ public class Leaderboard {
     //This function will need to get all the existing scores 
     //and place the new score in the correct placement
     //while removing score #11. Ties will result in the older score being ranked higher
-    public void addNewScore(String name, int score) {
+    public static void addNewScore(String name, int score) {
         String[][] oldScores = new String[10][2];
         String[][] newScores = new String[10][2];
         String finalScores = "";
@@ -76,9 +90,11 @@ public class Leaderboard {
     }
 
     public static void main(String[] args) {
-        Leaderboard test = new Leaderboard();
-        test.addNewScore("Riley", 1);
-        test.getScores();
+        //Leaderboard test = new Leaderboard();
+        Leaderboard.addNewScore("Riley", 1);
+        Leaderboard.getScores();
+        //Leaderboard.testScores();
     }
+    
 }
 
