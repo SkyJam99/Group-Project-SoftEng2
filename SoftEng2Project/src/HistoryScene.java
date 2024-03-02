@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-import javax.swing.JButton;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -12,7 +10,8 @@ public class HistoryScene extends JPanel {
         menuButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                Application.showScene("Game Scene");
+                Application.addScene(new LeaderboardScene(), "History Scene #2");
+                Application.showScene("History Scene #2");
 
             }
         });
