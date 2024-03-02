@@ -1,8 +1,6 @@
 package app;
 import java.io.*;
 
-import javax.swing.GroupLayout.Group;
-
 public class Leaderboard {
     private static final String FILE_PATH = System.getProperty("user.dir") + "\\SoftEng2Project\\scores.txt";
 

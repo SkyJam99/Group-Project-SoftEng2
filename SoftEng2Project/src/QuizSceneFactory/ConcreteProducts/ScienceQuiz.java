@@ -1,7 +1,7 @@
 package QuizSceneFactory.ConcreteProducts;
 
 import javax.swing.*;
-import java.awt.*;
+
 
 import QuizSceneFactory.QuizSceneInterface;
 

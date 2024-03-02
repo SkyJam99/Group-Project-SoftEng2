@@ -2,10 +2,7 @@ package app;
 
 import QuizSceneFactory.ConcreteCreators.*;
 import QuizSceneFactory.*;
-
-import javax.swing.JButton;
 import javax.swing.*;
-import java.awt.event.*;
 import java.util.*;
 
 public class QuizConstructor {

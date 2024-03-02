@@ -1,13 +1,8 @@
 package app;
-import javax.swing.JFrame;
-
-import QuizSceneFactory.ConcreteCreators.EntertainmentQuestion;
-import QuizSceneFactory.*;
 
 import javax.swing.JButton;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.*;
 
 public class EntertainmentScene extends JPanel {
     public EntertainmentScene(){
