@@ -51,7 +51,8 @@ public class QuizConstructor {
             Application.addScene(tempScene, category + " Q#" + Integer.toString(i + 1));
         }
         
-        //Finally we show the first question scene
+        //Finally we initialize the score tracker and show the first question scene
+        ScoreTracker.initialize();
         Application.showScene(category + " Q#1");
     }
     

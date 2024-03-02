@@ -8,8 +8,9 @@ Riley's Changes 02/03/2024
 3. Sorted java classes into packages - feel free to do more sorting
 
 MVP TODO
-1. Add logic for checking user answers and tracking score (observer pattern?)
-2. Update leaderboard with new scores after game
+1. Add logic for checking user answers and tracking score - DONE
+2. Update leaderboard with new scores after game - DONE
+3. Add a way to get the users name for the leaderboard
 3. Add real questions to QuestionRepository.java
 
 Extras TODO

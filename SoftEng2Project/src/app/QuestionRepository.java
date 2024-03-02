@@ -31,7 +31,7 @@ public class QuestionRepository {
     }
 
     private void addScienceQuestions() {
-        scienceQuestions.add(new Question("Science Question 1", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
+        scienceQuestions.add(new Question("Science Question 1", "Option A", "Option B", "Option C", "Option D", "Option A"));
         scienceQuestions.add(new Question("Science Question 2", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
         scienceQuestions.add(new Question("Science Question 3", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
         scienceQuestions.add(new Question("Science Question 4", "Option A", "Option B", "Option C", "Option D", "Correct Option"));

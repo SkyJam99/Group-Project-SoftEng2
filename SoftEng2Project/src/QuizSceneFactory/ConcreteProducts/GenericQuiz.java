@@ -34,7 +34,34 @@ public class GenericQuiz {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if (group.getSelection() == null) {
+                    JOptionPane.showMessageDialog(null, "Please select an option");
+                    return;
+                }
+
+                String selectedOption;
+                if(optionAButton.isSelected()) {
+                    selectedOption = optionA;
+                } else if(optionBButton.isSelected()) {
+                    selectedOption = optionB;
+                } else if(optionCButton.isSelected()) {
+                    selectedOption = optionC;
+                } else {
+                    selectedOption = optionD;
+                }
+
+                if(selectedOption.equals(correctOption)) {
+                    JOptionPane.showMessageDialog(null, "Correct!");
+                    ScoreTracker.incrementScore();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);
+                }
+
                 if(questionNum == 10) {
+                    JOptionPane.showMessageDialog(null, "Game Over! Your score is " + Integer.toString(ScoreTracker.getScore()) + " points.");
+                    Leaderboard.addNewScore("TempName", ScoreTracker.getScore()); //Need to add a way to capture name
+                    LeaderboardScene.updateLeaderboard();
                     Application.showScene("Leaderboard Scene"); //Will need to change this once we have an end scene
                     return;
                 } else {
@@ -49,4 +76,6 @@ public class GenericQuiz {
 
         return panel;
     }
+
+    
 }

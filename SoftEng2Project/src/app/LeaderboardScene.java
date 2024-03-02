@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 
 public class LeaderboardScene extends JPanel {
-    JTextArea leaderboardText = new JTextArea();
+    static JTextArea leaderboardText = new JTextArea();
     public LeaderboardScene(){
 
         setLayout(new GridLayout(1,3));
@@ -70,7 +70,7 @@ public class LeaderboardScene extends JPanel {
 
     }
     //method for displaying the scores from the text file
-    public String updateScores() {
+    public static String updateScores() {
         //using rileys leaderboard code
         String[][] scores = Leaderboard.getScores();
         //string builder is a tool to concatenate strings together;
@@ -83,5 +83,9 @@ public class LeaderboardScene extends JPanel {
         //leaderboardText.setText(sb.toString());
         System.out.println(sb.toString());
         return sb.toString();
+    }
+
+    public static void updateLeaderboard() {
+        leaderboardText.setText(updateScores());
     }
 }
