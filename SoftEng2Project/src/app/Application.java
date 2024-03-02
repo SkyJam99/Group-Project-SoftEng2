@@ -1,3 +1,4 @@
+package app;
 import com.sun.tools.javac.Main;
 
 import javax.swing.JFrame;

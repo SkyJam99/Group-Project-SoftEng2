@@ -1,3 +1,4 @@
+package app;
 import javax.swing.JFrame;
 
 import QuizSceneFactory.ConcreteCreators.EntertainmentQuestion;

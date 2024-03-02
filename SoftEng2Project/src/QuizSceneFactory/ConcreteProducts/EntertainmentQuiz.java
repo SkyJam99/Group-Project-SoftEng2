@@ -4,6 +4,7 @@ import QuizSceneFactory.QuizSceneInterface;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import app.*;
 
 
 
@@ -42,7 +43,7 @@ public class EntertainmentQuiz implements QuizSceneInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nextScene = "Entertainment Q#" + Integer.toString(questionNum + 1);
-                //Application.showScene(nextScene);
+                Application.showScene(nextScene);
             }
         });
 
