@@ -10,7 +10,7 @@ public class Leaderboard {
         File f = new File(FILE_PATH);
         System.out.println("Attempting to write to: " + f.getAbsolutePath());
         try(FileWriter writer = new FileWriter(FILE_PATH, false)){
-            writer.write("Test");
+            writer.write("Empty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\n");
         } catch (IOException e) {
             System.out.println("Error while writing to file");
         }
@@ -91,8 +91,8 @@ public class Leaderboard {
 
     public static void main(String[] args) {
         //Leaderboard test = new Leaderboard();
-        Leaderboard.addNewScore("Riley", 1);
-        Leaderboard.getScores();
+        //Leaderboard.addNewScore("Riley", 1);
+        //Leaderboard.getScores();
         //Leaderboard.testScores();
     }
     
