@@ -1,6 +1,7 @@
 package QuizSceneFactory.ConcreteProducts;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import app.*;
 
@@ -10,6 +11,9 @@ public class GenericQuiz {
         String panelName = category +" Q#" + Integer.toString(questionNum);
         JLabel panelNameLabel = new JLabel(panelName);
         panel.add(panelNameLabel);
+
+        JPanel layoutPanel = new JPanel();
+        layoutPanel.setLayout(new BoxLayout(layoutPanel, BoxLayout.Y_AXIS));
 
         JLabel questionTextLabel = new JLabel(questionText);
         panel.add(questionTextLabel);
@@ -60,7 +64,10 @@ public class GenericQuiz {
 
                 if(questionNum == 10) {
                     JOptionPane.showMessageDialog(null, "Game Over! Your score is " + Integer.toString(ScoreTracker.getScore()) + " points.");
-                    Leaderboard.addNewScore("TempName", ScoreTracker.getScore()); //Need to add a way to capture name
+                    String playerName = JOptionPane.showInputDialog(null, "Enter your name for the leaderboard!");
+                    if(playerName != null && !playerName.isEmpty()){
+                        Leaderboard.addNewScore(playerName, ScoreTracker.getScore());
+                    }
                     LeaderboardScene.updateLeaderboard();
                     Application.showScene("Leaderboard Scene"); //Will need to change this once we have an end scene
                     return;
