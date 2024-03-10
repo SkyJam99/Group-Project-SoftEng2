@@ -2,8 +2,8 @@ package app;
 import java.io.*;
 
 public class Leaderboard {
-    private static final String FILE_PATH = System.getProperty("user.dir") + "\\Group Project SoftEng2\\SoftEng2Project\\scores.txt";
 
+    private static String FILE_PATH;
 
     public static void testScores() {
         File f = new File(FILE_PATH);
@@ -17,6 +17,8 @@ public class Leaderboard {
 
     //Assuming that only 10 scores will be tracked total
     public static String[][] getScores() {
+
+        initalizeLeaderboard();
         
         String[][] scores = new String[10][2];
         String[] tempScore;
@@ -89,12 +91,29 @@ public class Leaderboard {
         }
     }
 
+    public static void initalizeLeaderboard(){
+        String osName = System.getProperty("os.name");
+        System.out.println(osName);
+        System.out.println(System.getProperty("user.dir"));
+        if(osName.contains("win")){
+            FILE_PATH = System.getProperty("user.dir") + "\\Group Project SoftEng2\\SoftEng2Project\\scores.txt";
+        } else {
+            FILE_PATH = System.getProperty("user.dir") + "/SoftEng2Project/scores.txt";
+        }
+
+    }
+
+
+
     public static void main(String[] args) {
         //Leaderboard test = new Leaderboard();
         //Leaderboard.addNewScore("Riley", 1);
         //Leaderboard.getScores();
         //Leaderboard.testScores();
     }
-    
+
+
+
+
 }
 

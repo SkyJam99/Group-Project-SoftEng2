@@ -10,6 +10,8 @@ import java.awt.*;
 
 import javax.swing.BorderFactory;
 import java.awt.GridLayout;
+
+
 public class Application {
 
     public static int score = 0;
@@ -17,6 +19,7 @@ public class Application {
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel parentPanel = new JPanel(cardLayout);
     public Application() {
+
         //apprently this swingutilities increases performance? can take it out if needed
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Spooky Quiz Game");
@@ -30,6 +33,7 @@ public class Application {
             addScene(new HistoryScene(), "History Scene");
             addScene(new ScienceScene(), "Science Scene");
             addScene(new EntertainmentScene(), "Entertainment Scene");
+
 
             frame.add(parentPanel);
 
