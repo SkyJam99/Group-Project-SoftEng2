@@ -4,35 +4,43 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import app.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Enumeration;
 
 public class GenericQuiz {
+
     public static JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
+        JPanel panel = createPanel(category, questionNum);
+        List<String> shuffledOptions = shuffleOptions(optionA, optionB, optionC, optionD);
+        createQuestionAndOptions(panel, questionText, shuffledOptions);
+        createSubmitButton(panel, shuffledOptions, correctOption, category, questionNum);
+        return panel;
+    }
+
+    private static JPanel createPanel(String category, int questionNum) {
         JPanel panel = new JPanel();
-        String panelName = category +" Q#" + Integer.toString(questionNum);
+        String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
         panel.add(panelNameLabel);
+        return panel;
+    }
 
-        List<String> shuffledOptions = new ArrayList<>(List.of(optionA, optionB, optionC, optionD));
+    private static List<String> shuffleOptions(String... options) {
+        List<String> shuffledOptions = new ArrayList<>(List.of(options));
         Collections.shuffle(shuffledOptions);
-        String opA = shuffledOptions.get(0);
-        String opB = shuffledOptions.get(1);
-        String opC = shuffledOptions.get(2);
-        String opD = shuffledOptions.get(3);
+        return shuffledOptions;
+    }
 
-        JPanel layoutPanel = new JPanel();
-        layoutPanel.setLayout(new BoxLayout(layoutPanel, BoxLayout.Y_AXIS));
-
+    private static void createQuestionAndOptions(JPanel panel, String questionText, List<String> options) {
         JLabel questionTextLabel = new JLabel(questionText);
         panel.add(questionTextLabel);
 
-        JRadioButton optionAButton = new JRadioButton(opA);
-        JRadioButton optionBButton = new JRadioButton(opB);
-        JRadioButton optionCButton = new JRadioButton(opC);
-        JRadioButton optionDButton = new JRadioButton(opD);
+        JRadioButton optionAButton = new JRadioButton(options.get(0));
+        JRadioButton optionBButton = new JRadioButton(options.get(1));
+        JRadioButton optionCButton = new JRadioButton(options.get(2));
+        JRadioButton optionDButton = new JRadioButton(options.get(3));
 
         ButtonGroup group = new ButtonGroup();
         group.add(optionAButton);
@@ -44,56 +52,70 @@ public class GenericQuiz {
         panel.add(optionBButton);
         panel.add(optionCButton);
         panel.add(optionDButton);
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (group.getSelection() == null) {
-                    JOptionPane.showMessageDialog(null, "Please select an option");
-                    return;
-                }
-
-                String selectedOption;
-                if(optionAButton.isSelected()) {
-                    selectedOption = opA;
-                } else if(optionBButton.isSelected()) {
-                    selectedOption = opB;
-                } else if(optionCButton.isSelected()) {
-                    selectedOption = opC;
-                } else {
-                    selectedOption = opD;
-                }
-
-                if(selectedOption.equals(correctOption)) {
-                    JOptionPane.showMessageDialog(null, "Correct!");
-                    ScoreTracker.incrementScore();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);
-                }
-
-                if(questionNum == 10) {
-                    JOptionPane.showMessageDialog(null, "Game Over! Your score is " + Integer.toString(ScoreTracker.getScore()) + " points.");
-                    String playerName = JOptionPane.showInputDialog(null, "Enter your name for the leaderboard!");
-                    if(playerName != null && !playerName.isEmpty()){
-                        Leaderboard.addNewScore(playerName, ScoreTracker.getScore());
-                    }
-                    LeaderboardScene.updateLeaderboard();
-                    Application.showScene("Leaderboard Scene"); //Will need to change this once we have an end scene
-                    return;
-                } else {
-                    String nextScene = category + " Q#" + Integer.toString(questionNum + 1);
-                    Application.showScene(nextScene);
-                }
-            }
-        });
-
-        panel.add(submitButton);
-
-
-        return panel;
     }
 
-    
+    private static void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {
+        JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
+        panel.add(submitButton);
+    }
+
+    private static void handleSubmitAction(List<String> options, String correctOption, String category, int questionNum, JPanel panel) {
+        ButtonGroup group = findButtonGroup(panel);
+        if (group != null && group.getSelection() != null) {
+            String selectedOption = options.get(getSelectedOptionIndex(group, panel));
+            displayResultMessage(selectedOption, correctOption, category, questionNum);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select an option");
+        }
+    }
+
+    private static ButtonGroup findButtonGroup(Container container) {
+        // Assuming there is only one ButtonGroup in this context
+        for (Component comp : container.getComponents()) {
+            if (comp instanceof JRadioButton) {
+                return ((JRadioButton) comp).getModel().getGroup();
+            }
+        }
+        return null;
+    }
+
+    private static int getSelectedOptionIndex(ButtonGroup group, Container container) {
+        int i = 0;
+        Enumeration<AbstractButton> buttons = group.getElements();
+        while (buttons.hasMoreElements()) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return i;
+            }
+            i++;
+        }
+        return -1; // Should not happen
+    }
+
+    private static void displayResultMessage(String selectedOption, String correctOption, String category, int questionNum) {
+        if (selectedOption.equals(correctOption)) {
+            JOptionPane.showMessageDialog(null, "Correct!");
+            ScoreTracker.incrementScore();
+        } else {
+            JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);
+        }
+
+        if (questionNum == 10) {
+            endGame();
+        } else {
+            String nextScene = category + " Q#" + (questionNum + 1);
+            Application.showScene(nextScene);
+        }
+    }
+
+    private static void endGame() {
+        JOptionPane.showMessageDialog(null, "Game Over! Your score is " + ScoreTracker.getScore() + " points.");
+        String playerName = JOptionPane.showInputDialog(null, "Enter your name for the leaderboard!");
+        if (playerName != null && !playerName.trim().isEmpty()) {
+            Leaderboard.addNewScore(playerName, ScoreTracker.getScore());
+        }
+        LeaderboardScene.updateLeaderboard();
+        Application.showScene("Leaderboard Scene");
+    }
 }
