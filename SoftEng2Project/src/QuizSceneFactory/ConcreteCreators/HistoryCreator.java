@@ -1,10 +1,10 @@
 package QuizSceneFactory.ConcreteCreators;
 
-import QuizSceneFactory.QuizScene;
+import QuizSceneFactory.QuizSceneCreator;
 import QuizSceneFactory.QuizSceneInterface;
 import QuizSceneFactory.ConcreteProducts.HistoryQuiz;
 
-public class HistoryQuestion extends QuizScene {
+public class HistoryCreator extends QuizSceneCreator {
     
     @Override
     public QuizSceneInterface constructScene() {

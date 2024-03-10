@@ -15,19 +15,19 @@ public class QuizConstructor {
         //First we get the questions from Jakobs code
         QuestionRepository repo = QuestionRepository.getInstance();
         List<Question> questions; // Declare the variable outside the if-else statements
-        QuizScene tempConstructor;
+        QuizSceneCreator tempConstructor;
 
         if (category.equals("Science")) {
             questions = repo.getScienceQuestions();
-            tempConstructor = new ScienceQuestion();
+            tempConstructor = new ScienceCreator();
         }
         else if (category.equals("History")) {
             questions = repo.getHistoryQuestions();
-            tempConstructor = new HistoryQuestion();
+            tempConstructor = new HistoryCreator();
         }
         else {
             questions = repo.getEntertainmentQuestions();
-            tempConstructor = new EntertainmentQuestion();
+            tempConstructor = new EntertainmentCreator();
         }
 
         //Then we call the QuizScene factory in a for loop

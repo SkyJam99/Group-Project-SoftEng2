@@ -1,10 +1,10 @@
 package QuizSceneFactory.ConcreteCreators;
 
-import QuizSceneFactory.QuizScene;
+import QuizSceneFactory.QuizSceneCreator;
 import QuizSceneFactory.QuizSceneInterface;
 import QuizSceneFactory.ConcreteProducts.EntertainmentQuiz;
 
-public class EntertainmentQuestion extends QuizScene {
+public class EntertainmentCreator extends QuizSceneCreator {
     @Override
     public QuizSceneInterface constructScene() {
         return new EntertainmentQuiz();
