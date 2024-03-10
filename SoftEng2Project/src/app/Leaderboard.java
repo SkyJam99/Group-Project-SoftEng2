@@ -92,9 +92,7 @@ public class Leaderboard {
     }
 
     public static void initalizeLeaderboard(){
-        String osName = System.getProperty("os.name");
-        System.out.println(osName);
-        System.out.println(System.getProperty("user.dir"));
+        String osName = System.getProperty("os.name").toLowerCase();
         if(osName.contains("win")){
             FILE_PATH = System.getProperty("user.dir") + "\\Group Project SoftEng2\\SoftEng2Project\\scores.txt";
         } else {
