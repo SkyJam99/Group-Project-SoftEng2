@@ -60,13 +60,13 @@ public class QuestionRepository {
         entertainmentQuestions.add(new Question("Which actor played the character of Tony Stark in the Marvel Cinematic Universe?", "Robert Downey Jr.", "Chris Hemsworth", "Chris Evans", "Mark Ruffalo", "Robert Downey Jr."));
         entertainmentQuestions.add(new Question("What is the highest-grossing animated film of all time?", "The Lion King (2019)", "Frozen", "The Super Mario Bros. Movie", "Minions", "The Lion King (2019)"));
         entertainmentQuestions.add(new Question("In which year did the first episode of \"Friends\" air?", "1994", "1990", "1997", "1996", "1994"));
-        entertainmentQuestions.add(new Question("Entertainment Question 4", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
-        entertainmentQuestions.add(new Question("Entertainment Question 5", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
-        entertainmentQuestions.add(new Question("Entertainment Question 6", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
-        entertainmentQuestions.add(new Question("Entertainment Question 7", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
-        entertainmentQuestions.add(new Question("Entertainment Question 8", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
-        entertainmentQuestions.add(new Question("Entertainment Question 9", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
-        entertainmentQuestions.add(new Question("Entertainment Question 10", "Option A", "Option B", "Option C", "Option D", "Correct Option"));
+        entertainmentQuestions.add(new Question("Which of these William Shakespeare plays were written first?", "Romeo and Juliet", "Macbeth", "Twelfth Night", "Hamlet", "Romeo and Juliet"));
+        entertainmentQuestions.add(new Question("Which of these is not a Beatles album?", "Hey Jude", "Abbey Road", "Yellow Submarine", "Let It Be", "Hey Jude"));
+        entertainmentQuestions.add(new Question("Which Hogwarts House from Harry Potter is represented by a Lion?", "Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin", "Gryffindor"));
+        entertainmentQuestions.add(new Question("Which of the races from the Lord of the Rings were not gifted one of the original rings of power?", "Hobbits", "Dwarves", "Elves", "Men", "Hobbits"));
+        entertainmentQuestions.add(new Question("What is the greatest selling album of all time?", "Thriller", "The Dark Side of the Moon", "Back in Black", "The Bodyguard", "Thriller"));
+        entertainmentQuestions.add(new Question("Which of these films did Christopher Nolan NOT direct?", "Man of Steel", "Interstellar", "Oppenheimer", "The Dark Knight", "Man of Steel"));
+        entertainmentQuestions.add(new Question("When did the first episode of Saturday Night Live air?", "1975", "1970", "1973", "1978", "1975"));
     }
 
     public List<Question> getScienceQuestions() { 
