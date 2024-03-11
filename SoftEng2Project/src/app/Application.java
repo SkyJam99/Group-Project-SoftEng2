@@ -25,6 +25,9 @@ public class Application {
             JFrame frame = new JFrame("Spooky Quiz Game");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+            //Initialize Leaderboard
+            Leaderboard.initalizeLeaderboard();
+
             //adding scene
             addScene(new MainMenu(frame), "Main Menu");
             addScene(new GameScene(), "Game Scene");

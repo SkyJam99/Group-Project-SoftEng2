@@ -5,21 +5,8 @@ public class Leaderboard {
 
     private static String FILE_PATH;
 
-    public static void testScores() {
-        File f = new File(FILE_PATH);
-        System.out.println("Attempting to write to: " + f.getAbsolutePath());
-        try(FileWriter writer = new FileWriter(FILE_PATH, false)){
-            writer.write("Empty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\n");
-        } catch (IOException e) {
-            System.out.println("Error while writing to file");
-        }
-    }
-
     //Assuming that only 10 scores will be tracked total
     public static String[][] getScores() {
-
-        initalizeLeaderboard();
-        
         String[][] scores = new String[10][2];
         String[] tempScore;
         //Use BufferedReader to read each line from the leaderboard file
@@ -57,7 +44,7 @@ public class Leaderboard {
         //Get existing scores
         oldScores = getScores();
 
-        //Use insertion sort to place the new score in a sorted array
+        //Use insertion to place the new score in a sorted array
         for(int i = 0; i < 10; i++) {
             try{ //Store integer value of score
                 tempScore = Integer.parseInt(oldScores[i][1]);
@@ -92,6 +79,7 @@ public class Leaderboard {
     }
 
     public static void initalizeLeaderboard(){
+        //Set file path based on OS
         String osName = System.getProperty("os.name").toLowerCase();
         if(osName.contains("win")){
             FILE_PATH = System.getProperty("user.dir") + "\\Group Project SoftEng2\\SoftEng2Project\\scores.txt";
@@ -99,10 +87,26 @@ public class Leaderboard {
             FILE_PATH = System.getProperty("user.dir") + "/SoftEng2Project/scores.txt";
         }
 
+
+        //Check if the scoresFile exists, if not create it
+        File scoresFile = new File(FILE_PATH);
+        if (!scoresFile.exists()) {
+            try {
+                scoresFile.createNewFile();
+                FileWriter writer = new FileWriter(scoresFile);
+                for (int i = 0; i < 10; i++) {
+                    writer.write("Empty 0\n");
+                }
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Error while creating file");
+            }
+        }
+
     }
 
 
-
+    /* Testing code
     public static void main(String[] args) {
         //Leaderboard test = new Leaderboard();
         //Leaderboard.addNewScore("Riley", 1);
@@ -110,6 +114,16 @@ public class Leaderboard {
         //Leaderboard.testScores();
     }
 
+    public static void testScores() {
+        File f = new File(FILE_PATH);
+        System.out.println("Attempting to write to: " + f.getAbsolutePath());
+        try(FileWriter writer = new FileWriter(FILE_PATH, false)){
+            writer.write("Empty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\n");
+        } catch (IOException e) {
+            System.out.println("Error while writing to file");
+        }
+    }
+    */
 
 
 
