@@ -1,11 +1,16 @@
 package app;
 
 import QuizSceneFactory.ConcreteCreators.*;
+import ScoreCommand.InitScoreCommand;
+import ScoreCommand.ScoreReceiver;
 import QuizSceneFactory.*;
 import javax.swing.*;
 import java.util.*;
+import ScoreCommand.*;
 
 public class QuizConstructor {
+    public static ScoreReceiver scoreReceiver = new ScoreReceiver();
+
     public static void buildQuiz(String category) {
         //Create the 10 scenes (one for each question) and add them to Application
         //Then show the first scene, which will have a button pointing to the next scene and so on
@@ -52,7 +57,8 @@ public class QuizConstructor {
         }
         
         //Finally we initialize the score tracker and show the first question scene
-        ScoreTracker.initialize();
+        Command initScoreCommand = new InitScoreCommand(scoreReceiver);
+        initScoreCommand.execute();
         Application.showScene(category + " Q#1");
     }
     
