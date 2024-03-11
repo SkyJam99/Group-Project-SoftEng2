@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Enumeration;
 
 public class GenericQuiz {
-    //private static ScoreReceiver scoreReceiver = new ScoreReceiver();
-
     public static JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
         JPanel panel = createPanel(category, questionNum);
         List<String> shuffledOptions = shuffleOptions(optionA, optionB, optionC, optionD);
@@ -102,6 +100,8 @@ public class GenericQuiz {
             addScoreCommand.execute();
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);
+            Command updateLastQuestionTimeCommand = new UpdateLastQuestionTimeCommand(QuizConstructor.scoreReceiver);
+            updateLastQuestionTimeCommand.execute();
         }
 
         if (questionNum == 10) {
@@ -113,7 +113,15 @@ public class GenericQuiz {
     }
 
     private static void endGame() {
-        JOptionPane.showMessageDialog(null, "Game Over! Your score is " + QuizConstructor.scoreReceiver.getScore() + " points.");
+
+        JOptionPane.showMessageDialog(
+            null, 
+            "Game Over! Your score is " + 
+            QuizConstructor.scoreReceiver.getScore() + 
+            " points. You took " + 
+            QuizConstructor.scoreReceiver.getTotalTime() + 
+            " seconds to complete the quiz.");
+
         String playerName = JOptionPane.showInputDialog(null, "Enter your name for the leaderboard!");
         if (playerName != null && !playerName.trim().isEmpty()) {
             Leaderboard.addNewScore(playerName, QuizConstructor.scoreReceiver.getScore());
