@@ -24,6 +24,18 @@ public class ScoreReceiver {
         updateLastQuestionTime();
     }
 
+    public void addScoreHalf() {
+        endTime = System.currentTimeMillis();
+        long timeElapsedMilliseconds = endTime - lastQuestionTime;
+        long timeElapsedSeconds = timeElapsedMilliseconds / 1000;
+
+        int points = (int) (100 - (timeElapsedSeconds * 10));
+        points = Math.max(points, 1); //Ensure user gets at least one point if they got the question right
+        
+        score += (points/2);
+        updateLastQuestionTime();
+    }
+
     public void updateLastQuestionTime() {
         lastQuestionTime = System.currentTimeMillis();
         endTime = lastQuestionTime;
