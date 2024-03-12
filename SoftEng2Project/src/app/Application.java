@@ -1,17 +1,15 @@
 package app;
 import com.sun.tools.javac.Main;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
 import javax.swing.*;
 
 import java.awt.*;
 
-import javax.swing.BorderFactory;
-import java.awt.GridLayout;
-
-
+/**
+ * Class Name: Application
+ * Purpose: Initializes the main application, setting up the quiz game scenes.
+ * Usage: This class is the entry point of the Quiz Game, it initializes the game's GUI and leaderboard
+ */
 public class Application {
 
     public static int score = 0;
@@ -19,6 +17,15 @@ public class Application {
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel parentPanel = new JPanel(cardLayout);
     
+
+    /**
+     * Method Name: Application (Constructor)
+     * Purpose: Sets up the main game window, initializes the game scenes, and displays the main menu.
+     * Parameters: None.
+     * Returns: None.
+     * Usage Example: new Application(); // To start the game.
+     * Last Modified: [Your Name/Team Name] on [Last Modification Date].
+     */
     public Application() {
 
         //apprently this swingutilities increases performance? can take it out if needed
@@ -47,15 +54,38 @@ public class Application {
         });
     }
 
-    //method to show the scene (used in MenuButton)
+    /**
+     * Method Name: showScene
+     * Purpose: Changes the current visible scene to the one specified by the scene name.
+     * Parameters:
+     *     - sceneName (String): The name of the scene to be displayed.
+     * Returns: None.
+     * Usage Example: Application.showScene("Main Menu"); // To display the main menu
+     */
     public static void showScene(String sceneName){
         cardLayout.show(parentPanel, sceneName);
     }
-    //method to add scene to the parent panel, reduced code repetition; sceneName matters
+    
+    /**
+     * Method Name: addScene
+     * Purpose: Adds a new scene to the card layout for later display.
+     * Parameters:
+     *     - scene (JPanel): The scene to add to the card layout.
+     *     - sceneName (String): The name of the scene, used as a reference for switching scenes.
+     * Returns: None.
+     * Usage Example: Application.addScene(new GameScene(), "Game Scene"); // To add the game scene.
+     */
     public static void addScene(JPanel scene, String sceneName){
         parentPanel.add(scene, sceneName);
     }
 
+    /**
+     * Method Name: main
+     * Purpose: Creates an instance of the Application class to start the game.
+     * Parameters:
+     *     - args (String[]): Command line arguments passed to the application.
+     * Returns: None.
+     */
     public static void main(String[] args){
         new Application();
     }

@@ -1,11 +1,24 @@
 package app;
 import java.io.*;
 
+
+/**
+ * Class Name: Leaderboard
+ * Purpose: Manages the leaderboard for the quiz game: reading, updating, and initializing the leaderboard
+ * Usage: This class is used to interact with the leaderboard file by retrieving scores, adding new scores, and initializing the file if it does not exist.
+ */
 public class Leaderboard {
 
     private static String FILE_PATH;
 
-    //Assuming that only 10 scores will be tracked total
+    /**
+     * Method Name: getScores
+     * Purpose: Retrieves the top 10 scores from the leaderboard file.
+     * Parameters: None.
+     * Returns: A 2D array of Strings containing the top 10 scores and names.
+     * Throws: None.
+     * Usage Example: String[][] scores = Leaderboard.getScores();
+     */
     public static String[][] getScores() {
         String[][] scores = new String[10][2];
         String[] tempScore;
@@ -31,9 +44,15 @@ public class Leaderboard {
     }
 
 
-    //This function will need to get all the existing scores 
-    //and place the new score in the correct placement
-    //while removing score #11. Ties will result in the older score being ranked higher
+    /**
+     * Method Name: addNewScore
+     * Purpose: Adds a new score to the leaderboard, ensuring it is placed in the correct order and removes the 11th score
+     * Parameters:
+     *     - name (String): The name associated with the new score.
+     *     - score (int): The score value to be added.
+     * Returns: None.
+     * Usage Example: Leaderboard.addNewScore("John Doe", 250);
+     */
     public static void addNewScore(String name, int score) {
         String[][] oldScores = new String[10][2];
         String[][] newScores = new String[10][2];
@@ -78,6 +97,13 @@ public class Leaderboard {
         }
     }
 
+    /**
+     * Method Name: initializeLeaderboard
+     * Purpose: Sets up the leaderboard file path and initializes the file with default scores if it does not exist.
+     * Parameters: None.
+     * Returns: None.
+     * Usage Example: Leaderboard.initializeLeaderboard();
+     */
     public static void initalizeLeaderboard(){
         //Set file path based on OS
         String osName = System.getProperty("os.name").toLowerCase();
@@ -106,24 +132,7 @@ public class Leaderboard {
     }
 
 
-    /* Testing code
-    public static void main(String[] args) {
-        //Leaderboard test = new Leaderboard();
-        //Leaderboard.addNewScore("Riley", 1);
-        //Leaderboard.getScores();
-        //Leaderboard.testScores();
-    }
-
-    public static void testScores() {
-        File f = new File(FILE_PATH);
-        System.out.println("Attempting to write to: " + f.getAbsolutePath());
-        try(FileWriter writer = new FileWriter(FILE_PATH, false)){
-            writer.write("Empty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\nEmpty 0\n");
-        } catch (IOException e) {
-            System.out.println("Error while writing to file");
-        }
-    }
-    */
+    
 
 
 
