@@ -6,23 +6,11 @@ import java.awt.*;
 public class HistoryScene extends JPanel {
     public HistoryScene(){
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        add(Box.createVerticalGlue());
-        
-
-
         JLabel historyText = new JLabel("How well do you know your history?");
-        
-
-
-        add(historyText);
-
-        add(Box.createVerticalStrut(50));
+        historyText.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
         JButton menuButton = new JButton("Back to Game Scene");
-
         menuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
@@ -45,6 +33,18 @@ public class HistoryScene extends JPanel {
             }
         });
 
+
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        add(Box.createVerticalGlue());
+
+        add(historyText);
+
+        add(Box.createVerticalStrut(50));
+
+        add(startButton);
+
+        add(Box.createVerticalStrut(50));
 
         add(menuButton);
 
