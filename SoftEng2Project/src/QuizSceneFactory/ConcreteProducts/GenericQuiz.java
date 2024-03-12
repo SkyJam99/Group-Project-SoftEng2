@@ -23,8 +23,20 @@ public class GenericQuiz {
         JPanel panel = new JPanel();
         String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
+        
+        panel.setLayout(new GridLayout(12,3));
+        
+        //NEED TO FIGURE OUT HOW EACH SCENE IS BUILT TO KNOW WHEN EACH IS INSERTED INTO THE SCENE
+        //SWING STYLING IS LIKE ON BY ONE IN ORDER
+
+        //SO I NEED TO FIGURE OUT AND HOW TO USE THE SAME SCENE "PANEL" TO INSERT ALL COMPONENTS
         panel.add(panelNameLabel);
+        System.out.println("CreatePanel fired");
+    
+
+        
         return panel;
+
     }
 
     private static List<String> shuffleOptions(String... options) {
@@ -35,12 +47,20 @@ public class GenericQuiz {
 
     private static void createQuestionAndOptions(JPanel panel, String questionText, List<String> options) {
         JLabel questionTextLabel = new JLabel(questionText);
+        
+        System.out.println("Create question and options fired");
+        
+        //styling
+
+
         panel.add(questionTextLabel);
+
 
         JRadioButton optionAButton = new JRadioButton(options.get(0));
         JRadioButton optionBButton = new JRadioButton(options.get(1));
         JRadioButton optionCButton = new JRadioButton(options.get(2));
         JRadioButton optionDButton = new JRadioButton(options.get(3));
+
 
         ButtonGroup group = new ButtonGroup();
         group.add(optionAButton);
@@ -48,10 +68,15 @@ public class GenericQuiz {
         group.add(optionCButton);
         group.add(optionDButton);
 
+       
+
         panel.add(optionAButton);
         panel.add(optionBButton);
         panel.add(optionCButton);
         panel.add(optionDButton);
+
+
+        
     }
 
     private static void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {

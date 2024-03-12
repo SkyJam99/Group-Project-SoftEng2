@@ -18,6 +18,7 @@ public class Application {
     public static int timer = 0;
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel parentPanel = new JPanel(cardLayout);
+    
     public Application() {
 
         //apprently this swingutilities increases performance? can take it out if needed

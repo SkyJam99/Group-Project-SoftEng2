@@ -5,11 +5,14 @@ import java.awt.event.*;
 
 public class GameScene extends JPanel {
     public GameScene(){
-        JPanel GameScene = new JPanel();
         Dimension buttonSize = new Dimension(200,50);
+        JLabel categoryText = new JLabel("Select your category");
+        setLayout(new GridLayout(9,3));
+        
+        
 
-        setLayout(new GridLayout(5,3));
-        add(new JLabel("Select your category"));
+
+        add(categoryText);
 
         MenuButton historyButton = new MenuButton("History","History Scene");
         MenuButton scienceButton = new MenuButton("Science", "Science Scene");
