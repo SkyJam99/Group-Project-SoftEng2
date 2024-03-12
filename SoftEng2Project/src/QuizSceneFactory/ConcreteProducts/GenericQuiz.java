@@ -13,6 +13,12 @@ import java.util.Enumeration;
 public class GenericQuiz implements Quiz{
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
         JPanel panel = createPanel(category, questionNum);
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        System.out.println("Quiz Constructor is ran");
+
+
         List<String> shuffledOptions = shuffleOptions(optionA, optionB, optionC, optionD);
         createQuestionAndOptions(panel, questionText, shuffledOptions);
         createSubmitButton(panel, shuffledOptions, correctOption, category, questionNum);
@@ -23,18 +29,12 @@ public class GenericQuiz implements Quiz{
         JPanel panel = new JPanel();
         String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
-        
-        panel.setLayout(new GridLayout(12,3));
-        
-        //NEED TO FIGURE OUT HOW EACH SCENE IS BUILT TO KNOW WHEN EACH IS INSERTED INTO THE SCENE
-        //SWING STYLING IS LIKE ON BY ONE IN ORDER
 
-        //SO I NEED TO FIGURE OUT AND HOW TO USE THE SAME SCENE "PANEL" TO INSERT ALL COMPONENTS
+        panelNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         panel.add(panelNameLabel);
-        System.out.println("CreatePanel fired");
-    
 
-        
+
         return panel;
 
     }
@@ -46,20 +46,25 @@ public class GenericQuiz implements Quiz{
     }
 
     public void createQuestionAndOptions(JPanel panel, String questionText, List<String> options) {
+        //align each component in the center of the box layout (from parent panel)
         JLabel questionTextLabel = new JLabel(questionText);
+        questionTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        System.out.println("Create question and options fired");
-        
-        //styling
-
-
         panel.add(questionTextLabel);
 
 
         JRadioButton optionAButton = new JRadioButton(options.get(0));
+        optionAButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JRadioButton optionBButton = new JRadioButton(options.get(1));
+        optionBButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JRadioButton optionCButton = new JRadioButton(options.get(2));
+        optionCButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JRadioButton optionDButton = new JRadioButton(options.get(3));
+        optionDButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
 
         ButtonGroup group = new ButtonGroup();
@@ -81,7 +86,10 @@ public class GenericQuiz implements Quiz{
 
     public void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {
         JButton submitButton = new JButton("Submit");
+        submitButton.setPreferredSize(new Dimension(30,30));
         submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
+        //aligning in the center
+        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(submitButton);
     }
 

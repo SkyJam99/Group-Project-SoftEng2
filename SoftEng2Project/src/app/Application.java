@@ -48,6 +48,8 @@ public class Application {
 
             frame.add(parentPanel);
 
+            frame.getContentPane().setBackground(new Color(303));
+
             frame.setSize(1000,1000);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
