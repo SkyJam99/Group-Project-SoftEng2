@@ -82,12 +82,12 @@ public class Leaderboard {
         //Set file path based on OS
         String osName = System.getProperty("os.name").toLowerCase();
         if(osName.contains("win")){
-            FILE_PATH = System.getProperty("user.dir") + "\\Group Project SoftEng2\\SoftEng2Project\\scores.txt";
+            FILE_PATH = System.getProperty("user.dir") + "\\SoftEng2Project\\scores.txt";
         } else {
             FILE_PATH = System.getProperty("user.dir") + "/SoftEng2Project/scores.txt";
         }
 
-
+        System.out.println(FILE_PATH);
         //Check if the scoresFile exists, if not create it
         File scoresFile = new File(FILE_PATH);
         if (!scoresFile.exists()) {
