@@ -17,7 +17,6 @@ public class EntertainmentCreator extends QuizSceneCreator {
      * Parameters: None.
      * Returns: QuizSceneInterface - An instance of EntertainmentQuiz which implements QuizSceneInterface.
      */
-    
     @Override
     public QuizSceneInterface constructScene() {
         return new EntertainmentQuiz();
