@@ -3,7 +3,17 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+/**
+ * Class Name: HistoryScene
+ * Purpose: Provides the GUI for the History category of the quiz game, allowing users to start the quiz or return to the main game scene.
+ * Usage: This class is instantiated and displayed when the user selects the History category from the main game scene.
+ */
 public class HistoryScene extends JPanel {
+    
+    /**
+     * Method Name: HistoryScene
+     * Purpose: Constructs the HistoryScene with all UI components setup
+     */
     public HistoryScene(){
 
         JLabel historyText = new JLabel("How well do you know your history?");

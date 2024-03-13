@@ -12,8 +12,11 @@ import java.awt.*;
  */
 public class Application {
 
+    //Can we get rid of these variables?
     public static int score = 0;
     public static int timer = 0;
+
+    
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel parentPanel = new JPanel(cardLayout);
     
@@ -28,7 +31,7 @@ public class Application {
      */
     public Application() {
 
-        //apprently this swingutilities increases performance? can take it out if needed
+        //this swingutilities increases performance
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Spooky Quiz Game");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

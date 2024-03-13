@@ -4,7 +4,17 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+/**
+ * Class Name: EntertainmentScene
+ * Purpose: Provides the GUI for the Entertainment category of the quiz game, allowing users to start the quiz or return to the main game scene.
+ * Usage: This class is instantiated and displayed when the user selects the Entertainment category from the main game scene.
+ */
 public class EntertainmentScene extends JPanel {
+    
+    /**
+     * Method Name: EntertainmentScene
+     * Purpose: Constructs the EntertainmentScene with all UI components setup
+     */
     public EntertainmentScene(){
 
         JLabel entertainmentText = new JLabel("Movie time! Do you have what it takes?");

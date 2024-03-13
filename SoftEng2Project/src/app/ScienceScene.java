@@ -3,7 +3,17 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+/**
+ * Class Name: ScienceScene
+ * Purpose: Provides the GUI for the science category of the quiz game, allowing users to start the quiz or return to the main game scene.
+ * Usage: This class is instantiated and displayed when the user selects the science category from the main game scene.
+ */
 public class ScienceScene extends JPanel {
+    
+    /**
+     * Method Name: ScienceScene
+     * Purpose: Constructs the ScienceScene with all UI components setup
+     */
     public ScienceScene(){
 
         JLabel scienceText = new JLabel("Feeling sciency? Test your knowledge!");
