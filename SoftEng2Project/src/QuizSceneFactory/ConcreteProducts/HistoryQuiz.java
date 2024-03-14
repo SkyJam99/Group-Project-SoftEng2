@@ -22,7 +22,7 @@ public class HistoryQuiz implements QuizSceneInterface {
             q = new GenericQuiz();
         }
 
-        JPanel panel = q.quizConstructor("Histroy", questionNum, questionText, optionA, optionB, optionC, optionD, correctOption);
+        JPanel panel = q.quizConstructor("History", questionNum, questionText, optionA, optionB, optionC, optionD, correctOption);
         return panel;
     }
 }
