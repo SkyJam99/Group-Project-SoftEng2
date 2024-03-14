@@ -1,28 +1,18 @@
 package QuizSceneFactory.ConcreteProducts;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.GridLayout;
+import ScoreCommand.*;
+import javax.swing.*;
+import java.awt.*;
+//import java.awt.event.*;
+import app.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Enumeration;
 import java.util.List;
-
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
-import ScoreCommand.AddScoreCommand;
-import ScoreCommand.Command;
-import ScoreCommand.UpdateLastQuestionTimeCommand;
-import app.*;
+import java.util.Enumeration;
 
 public class JumbledQuiz implements Quiz {
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
+        
         StringBuilder optionARev = new StringBuilder(optionA);
         optionA = optionARev.reverse().toString();
         StringBuilder optionBRev = new StringBuilder(optionB);
@@ -35,6 +25,11 @@ public class JumbledQuiz implements Quiz {
         correctOption = correctOptionRev.reverse().toString();
         
         JPanel panel = createPanel(category, questionNum);
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        System.out.println("Quiz Constructor is ran");
+
         List<String> shuffledOptions = shuffleOptions(optionA, optionB, optionC, optionD);
         createQuestionAndOptions(panel, questionText, shuffledOptions);
         createSubmitButton(panel, shuffledOptions, correctOption, category, questionNum);
@@ -46,10 +41,8 @@ public class JumbledQuiz implements Quiz {
         String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
         
-        panel.setLayout(new GridLayout(12,3));
-        
-        //NEED TO FIGURE OUT HOW EACH SCENE IS BUILT TO KNOW WHEN EACH IS INSERTED INTO THE SCENE
-        //SWING STYLING IS LIKE ON BY ONE IN ORDER
+        panelNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         //SO I NEED TO FIGURE OUT AND HOW TO USE THE SAME SCENE "PANEL" TO INSERT ALL COMPONENTS
         panel.add(panelNameLabel);
@@ -69,6 +62,7 @@ public class JumbledQuiz implements Quiz {
 
     public void createQuestionAndOptions(JPanel panel, String questionText, List<String> options) {
         JLabel questionTextLabel = new JLabel(questionText);
+        questionTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         System.out.println("Create question and options fired");
         
@@ -79,9 +73,16 @@ public class JumbledQuiz implements Quiz {
 
 
         JRadioButton optionAButton = new JRadioButton(options.get(0));
+        optionAButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JRadioButton optionBButton = new JRadioButton(options.get(1));
+        optionBButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JRadioButton optionCButton = new JRadioButton(options.get(2));
+        optionCButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JRadioButton optionDButton = new JRadioButton(options.get(3));
+        optionDButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
         ButtonGroup group = new ButtonGroup();
@@ -103,7 +104,10 @@ public class JumbledQuiz implements Quiz {
 
     public void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {
         JButton submitButton = new JButton("Submit");
+        submitButton.setPreferredSize(new Dimension(30,30));
         submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
+        //aligning in the center
+        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(submitButton);
     }
 

@@ -18,6 +18,8 @@ public class EntertainmentQuiz implements QuizSceneInterface {
             q = new PointModQuiz();
         } else if (r == 1) {
             q = new JumbledQuiz();
+        } else if (r == 2) {
+            q = new LessTimeQuiz();
         } else {
             q = new GenericQuiz();
         }
