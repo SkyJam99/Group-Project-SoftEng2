@@ -12,16 +12,17 @@ import java.util.Enumeration;
 
 public class GenericQuiz implements Quiz{
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
+
         JPanel panel = createPanel(category, questionNum);
-
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-        System.out.println("Quiz Constructor is ran");
-
+        panel.add(Box.createVerticalGlue());
 
         List<String> shuffledOptions = shuffleOptions(optionA, optionB, optionC, optionD);
         createQuestionAndOptions(panel, questionText, shuffledOptions);
         createSubmitButton(panel, shuffledOptions, correctOption, category, questionNum);
+
+        panel.add(Box.createVerticalGlue());
+
         return panel;
     }
 
@@ -30,10 +31,8 @@ public class GenericQuiz implements Quiz{
         String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
 
-        panelNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         panel.add(panelNameLabel);
-
 
         return panel;
 
@@ -46,25 +45,30 @@ public class GenericQuiz implements Quiz{
     }
 
     public void createQuestionAndOptions(JPanel panel, String questionText, List<String> options) {
+
         //align each component in the center of the box layout (from parent panel)
+
         JLabel questionTextLabel = new JLabel(questionText);
+        questionTextLabel.setFont(questionTextLabel.getFont().deriveFont(Font.PLAIN, 30));
         questionTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         panel.add(questionTextLabel);
 
-
         JRadioButton optionAButton = new JRadioButton(options.get(0));
+        optionAButton.setFont(optionAButton.getFont().deriveFont(Font.PLAIN, 20));
         optionAButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JRadioButton optionBButton = new JRadioButton(options.get(1));
+        optionBButton.setFont(optionBButton.getFont().deriveFont(Font.PLAIN, 20));
         optionBButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JRadioButton optionCButton = new JRadioButton(options.get(2));
+        optionCButton.setFont(optionCButton.getFont().deriveFont(Font.PLAIN, 20));
         optionCButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JRadioButton optionDButton = new JRadioButton(options.get(3));
+        optionDButton.setFont(optionDButton.getFont().deriveFont(Font.PLAIN, 20));
         optionDButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 
 
         ButtonGroup group = new ButtonGroup();
@@ -73,15 +77,11 @@ public class GenericQuiz implements Quiz{
         group.add(optionCButton);
         group.add(optionDButton);
 
-       
-
         panel.add(optionAButton);
         panel.add(optionBButton);
         panel.add(optionCButton);
         panel.add(optionDButton);
 
-
-        
     }
 
     public void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {

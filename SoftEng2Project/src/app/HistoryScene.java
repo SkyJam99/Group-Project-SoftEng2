@@ -15,12 +15,17 @@ public class HistoryScene extends JPanel {
      * Purpose: Constructs the HistoryScene with all UI components setup
      */
     public HistoryScene(){
-
+        Dimension buttonSize = new Dimension(200,50);
         JLabel historyText = new JLabel("How well do you know your history?");
+
+        historyText.setFont(historyText.getFont().deriveFont(Font.PLAIN, 40));
         historyText.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
         JButton menuButton = new JButton("Back to Game Scene");
+        menuButton.setPreferredSize(buttonSize);
+        menuButton.setFont(menuButton.getFont().deriveFont(Font.PLAIN, 30));
+
         menuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
@@ -34,6 +39,8 @@ public class HistoryScene extends JPanel {
 
 
         JButton startButton = new JButton("Start History Category");
+        startButton.setPreferredSize(buttonSize);
+        startButton.setFont(menuButton.getFont().deriveFont(Font.PLAIN, 30));
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         startButton.addActionListener(new ActionListener(){
@@ -54,7 +61,7 @@ public class HistoryScene extends JPanel {
 
         add(startButton);
 
-        add(Box.createVerticalStrut(50));
+        add(Box.createVerticalStrut(10));
 
         add(menuButton);
 

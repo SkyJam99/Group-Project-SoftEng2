@@ -16,10 +16,15 @@ public class ScienceScene extends JPanel {
      */
     public ScienceScene(){
 
+        Dimension buttonSize = new Dimension(200,50);
+
         JLabel scienceText = new JLabel("Feeling sciency? Test your knowledge!");
+        scienceText.setFont(scienceText.getFont().deriveFont(Font.PLAIN, 40));
         scienceText.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton menuButton = new JButton("Back to Game Scene");
+        menuButton.setPreferredSize(buttonSize);
+        menuButton.setFont(menuButton.getFont().deriveFont(Font.PLAIN, 30));
         menuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         menuButton.addActionListener(new ActionListener(){
@@ -32,7 +37,11 @@ public class ScienceScene extends JPanel {
 
 
         JButton startButton = new JButton("Start Science Category");
+        startButton.setPreferredSize(buttonSize);
+        startButton.setFont(menuButton.getFont().deriveFont(Font.PLAIN, 30));
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
         startButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -51,7 +60,7 @@ public class ScienceScene extends JPanel {
 
         add(startButton);
 
-        add(Box.createVerticalStrut(50));
+        add(Box.createVerticalStrut(10));
         
         add(menuButton);
 

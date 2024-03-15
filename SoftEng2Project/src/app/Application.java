@@ -53,7 +53,9 @@ public class Application {
 
             frame.getContentPane().setBackground(new Color(303));
 
-            frame.setSize(1000,1000);
+            Dimension screenSize = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+            frame.setSize(screenSize.width,screenSize.height);
+
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
