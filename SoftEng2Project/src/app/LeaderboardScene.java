@@ -81,7 +81,6 @@ public class LeaderboardScene extends JPanel {
         }
         //setting leaderboard to the text area
         //leaderboardText.setText(sb.toString());
-        System.out.println(sb.toString());
         return sb.toString();
     }
 
