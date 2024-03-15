@@ -62,6 +62,25 @@ public class ScoreReceiver {
         updateLastQuestionTime();
     }
 
+        /**
+     * Method Name: addScoreLessTime
+     * Purpose: Adds the points calculated based on the time taken to answer the current question using half the time, to mess with the user
+     * Parameters: None
+     * Returns: None
+     * Usage Example: scoreReceiver.addScoreLessTime(); // Adds half points for a partially correct answer
+     */
+    public void addScoreLessTime() {
+        endTime = System.currentTimeMillis();
+        long timeElapsedMilliseconds = endTime - lastQuestionTime;
+        long timeElapsedSeconds = timeElapsedMilliseconds / 1000;
+
+        int points = (int) (50 - (timeElapsedSeconds * 10));
+        points = Math.max(points, 1); //Ensure user gets at least one point if they got the question right
+        
+        score += (points);
+        updateLastQuestionTime();
+    }
+
     /**
      * Method Name: updateLastQuestionTime
      * Purpose: Updates the timestamp of the last question to the current time.

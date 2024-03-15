@@ -129,7 +129,7 @@ public class LessTimeQuiz implements Quiz{
     public void displayResultMessage(String selectedOption, String correctOption, String category, int questionNum) {
         if (selectedOption.equals(correctOption)) {
             JOptionPane.showMessageDialog(null, "Correct!");
-            Command addScoreCommand = new AddScoreCommand(QuizConstructor.scoreReceiver);
+            Command addScoreCommand = new AddScoreLessTimeCommand(QuizConstructor.scoreReceiver);
             addScoreCommand.execute();
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);
