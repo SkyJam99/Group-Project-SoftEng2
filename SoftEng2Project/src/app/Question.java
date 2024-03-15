@@ -1,4 +1,4 @@
-package QuestionSingleton;
+package app;
 public class Question {
     private String questionText;
     private String optionA;

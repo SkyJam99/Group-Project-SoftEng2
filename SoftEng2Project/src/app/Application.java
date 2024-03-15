@@ -30,7 +30,6 @@ public class Application {
      * Parameters: None.
      * Returns: None.
      * Usage Example: new Application(); // To start the game.
-     * Last Modified: [Your Name/Team Name] on [Last Modification Date].
      */
     public Application() {
 

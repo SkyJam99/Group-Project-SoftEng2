@@ -5,10 +5,6 @@ import ScoreCommand.InitScoreCommand;
 import ScoreCommand.ScoreReceiver;
 import QuizSceneFactory.*;
 import javax.swing.*;
-
-import QuestionSingleton.Question;
-import QuestionSingleton.QuestionRepository;
-
 import java.util.*;
 import ScoreCommand.*;
 
@@ -25,7 +21,7 @@ public class QuizConstructor {
         QuestionRepository repo = QuestionRepository.getInstance();
         List<Question> questions; // Declare the variable outside the if-else statements
 
-
+        
         QuizSceneCreator tempConstructor;
 
         if (category.equals("Science")) {
