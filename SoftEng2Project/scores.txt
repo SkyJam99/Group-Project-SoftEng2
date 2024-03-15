@@ -1,3 +1,6 @@
+jakob 620
+srtjdfhdgzf 391
+erwdfcv 300
 Noah 250
 noshhhaa 240
 noooah 90
@@ -5,6 +8,3 @@ n 80
 Noah 6
 TempName 1
 TempName 1
-Noah 1
-Empty 0
-Empty 0

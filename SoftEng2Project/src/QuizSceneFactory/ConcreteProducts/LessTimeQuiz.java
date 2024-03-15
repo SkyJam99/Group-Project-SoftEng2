@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.*;
 
 import ScoreCommand.AddScoreCommand;
+import ScoreCommand.AddScoreLessTimeCommand;
 import ScoreCommand.Command;
 import ScoreCommand.UpdateLastQuestionTimeCommand;
 import app.Application;
