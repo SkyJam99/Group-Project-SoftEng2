@@ -1,4 +1,4 @@
-package QuizSceneFactory.ConcreteProducts;
+package QuizStrategy;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,12 +8,10 @@ import java.util.List;
 
 import javax.swing.*;
 
+import Leaderboard.Leaderboard;
+import Leaderboard.LeaderboardScene;
 import ScoreCommand.*;
 import ScoreCommand.UpdateLastQuestionTimeCommand;
-import app.Application;
-import app.Leaderboard;
-import app.QuizConstructor;
-
 import app.*;
 
 public class PointModQuiz implements Quiz {

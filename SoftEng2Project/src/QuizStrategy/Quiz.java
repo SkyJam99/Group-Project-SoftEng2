@@ -1,4 +1,4 @@
-package QuizSceneFactory.ConcreteProducts;
+package QuizStrategy;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;

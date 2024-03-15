@@ -1,6 +1,9 @@
-package app;
+package Leaderboard;
 
 import javax.swing.JButton;
+
+import app.Application;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

@@ -1,6 +1,9 @@
 package app;
 import com.sun.tools.javac.Main;
 
+import Leaderboard.Leaderboard;
+import Leaderboard.LeaderboardScene;
+
 import javax.swing.*;
 
 import java.awt.*;

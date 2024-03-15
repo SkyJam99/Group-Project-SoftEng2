@@ -1,24 +1,20 @@
-package QuizSceneFactory.ConcreteProducts;
+package QuizStrategy;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.List;
-
+import ScoreCommand.*;
 import javax.swing.*;
 
-import ScoreCommand.AddScoreCommand;
-import ScoreCommand.AddScoreLessTimeCommand;
-import ScoreCommand.Command;
-import ScoreCommand.UpdateLastQuestionTimeCommand;
-import app.Application;
-import app.Leaderboard;
-import app.QuizConstructor;
+import Leaderboard.Leaderboard;
+import Leaderboard.LeaderboardScene;
 
+import java.awt.*;
+//import java.awt.event.*;
 import app.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Enumeration;
 
-public class LessTimeQuiz implements Quiz{
+public class GenericQuiz implements Quiz{
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
 
         JPanel panel = createPanel(category, questionNum);
@@ -59,14 +55,8 @@ public class LessTimeQuiz implements Quiz{
         JLabel questionTextLabel = new JLabel(questionText);
         questionTextLabel.setFont(questionTextLabel.getFont().deriveFont(Font.PLAIN, 30));
         questionTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        System.out.println("Create question and options fired");
         
-        //styling
-
-
         panel.add(questionTextLabel);
-
 
         JRadioButton optionAButton = new JRadioButton(options.get(0));
         optionAButton.setFont(optionAButton.getFont().deriveFont(Font.PLAIN, 20));
@@ -85,30 +75,25 @@ public class LessTimeQuiz implements Quiz{
         optionDButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
-
         ButtonGroup group = new ButtonGroup();
         group.add(optionAButton);
         group.add(optionBButton);
         group.add(optionCButton);
         group.add(optionDButton);
 
-       
-
         panel.add(optionAButton);
         panel.add(optionBButton);
         panel.add(optionCButton);
         panel.add(optionDButton);
-        
+
     }
 
     public void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {
         JButton submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(30,30));
-
         submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
         //aligning in the center
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         panel.add(submitButton);
     }
 
@@ -148,7 +133,7 @@ public class LessTimeQuiz implements Quiz{
     public void displayResultMessage(String selectedOption, String correctOption, String category, int questionNum) {
         if (selectedOption.equals(correctOption)) {
             JOptionPane.showMessageDialog(null, "Correct!");
-            Command addScoreCommand = new AddScoreLessTimeCommand(QuizConstructor.scoreReceiver);
+            Command addScoreCommand = new AddScoreCommand(QuizConstructor.scoreReceiver);
             addScoreCommand.execute();
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);

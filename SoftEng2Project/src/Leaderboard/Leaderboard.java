@@ -1,4 +1,4 @@
-package app;
+package Leaderboard;
 import java.io.*;
 
 

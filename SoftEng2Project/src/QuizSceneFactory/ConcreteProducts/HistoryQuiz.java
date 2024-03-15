@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.swing.*;
 
 import QuizSceneFactory.QuizSceneInterface;
+import QuizStrategy.*;
 
 public class HistoryQuiz implements QuizSceneInterface {
     @Override

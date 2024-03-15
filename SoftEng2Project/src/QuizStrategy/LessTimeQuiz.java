@@ -1,4 +1,4 @@
-package QuizSceneFactory.ConcreteProducts;
+package QuizStrategy;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,23 +8,16 @@ import java.util.List;
 
 import javax.swing.*;
 
+import Leaderboard.Leaderboard;
+import Leaderboard.LeaderboardScene;
 import ScoreCommand.AddScoreCommand;
+import ScoreCommand.AddScoreLessTimeCommand;
 import ScoreCommand.Command;
 import ScoreCommand.UpdateLastQuestionTimeCommand;
 import app.*;
 
-public class JumbledQuiz implements Quiz {
+public class LessTimeQuiz implements Quiz{
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
-        StringBuilder optionARev = new StringBuilder(optionA);
-        optionA = optionARev.reverse().toString();
-        StringBuilder optionBRev = new StringBuilder(optionB);
-        optionB = optionBRev.reverse().toString();
-        StringBuilder optionCRev = new StringBuilder(optionC);
-        optionC = optionCRev.reverse().toString();
-        StringBuilder optionDRev = new StringBuilder(optionD);
-        optionD = optionDRev.reverse().toString();
-        StringBuilder correctOptionRev = new StringBuilder(correctOption);
-        correctOption = correctOptionRev.reverse().toString();
 
         JPanel panel = createPanel(category, questionNum);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -44,11 +37,9 @@ public class JumbledQuiz implements Quiz {
         String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
 
-        panelNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 
         panel.add(panelNameLabel);
-        System.out.println("ScrambledQuiz created");
+
         return panel;
 
     }
@@ -66,6 +57,11 @@ public class JumbledQuiz implements Quiz {
         JLabel questionTextLabel = new JLabel(questionText);
         questionTextLabel.setFont(questionTextLabel.getFont().deriveFont(Font.PLAIN, 30));
         questionTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        System.out.println("Create question and options fired");
+        
+        //styling
+
 
         panel.add(questionTextLabel);
 
@@ -87,6 +83,7 @@ public class JumbledQuiz implements Quiz {
         optionDButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
+
         ButtonGroup group = new ButtonGroup();
         group.add(optionAButton);
         group.add(optionBButton);
@@ -99,17 +96,17 @@ public class JumbledQuiz implements Quiz {
         panel.add(optionBButton);
         panel.add(optionCButton);
         panel.add(optionDButton);
-
-
         
     }
 
     public void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {
         JButton submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(30,30));
+
         submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
         //aligning in the center
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         panel.add(submitButton);
     }
 
@@ -149,7 +146,7 @@ public class JumbledQuiz implements Quiz {
     public void displayResultMessage(String selectedOption, String correctOption, String category, int questionNum) {
         if (selectedOption.equals(correctOption)) {
             JOptionPane.showMessageDialog(null, "Correct!");
-            Command addScoreCommand = new AddScoreCommand(QuizConstructor.scoreReceiver);
+            Command addScoreCommand = new AddScoreLessTimeCommand(QuizConstructor.scoreReceiver);
             addScoreCommand.execute();
         } else {
             JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + correctOption);

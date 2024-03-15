@@ -1,17 +1,32 @@
-package QuizSceneFactory.ConcreteProducts;
+package QuizStrategy;
 
-import ScoreCommand.*;
-import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.*;
-import app.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Enumeration;
+import java.util.List;
 
-public class GenericQuiz implements Quiz{
+import javax.swing.*;
+
+import Leaderboard.Leaderboard;
+import Leaderboard.LeaderboardScene;
+import ScoreCommand.AddScoreCommand;
+import ScoreCommand.Command;
+import ScoreCommand.UpdateLastQuestionTimeCommand;
+import app.*;
+
+public class JumbledQuiz implements Quiz {
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
+        StringBuilder optionARev = new StringBuilder(optionA);
+        optionA = optionARev.reverse().toString();
+        StringBuilder optionBRev = new StringBuilder(optionB);
+        optionB = optionBRev.reverse().toString();
+        StringBuilder optionCRev = new StringBuilder(optionC);
+        optionC = optionCRev.reverse().toString();
+        StringBuilder optionDRev = new StringBuilder(optionD);
+        optionD = optionDRev.reverse().toString();
+        StringBuilder correctOptionRev = new StringBuilder(correctOption);
+        correctOption = correctOptionRev.reverse().toString();
 
         JPanel panel = createPanel(category, questionNum);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -31,9 +46,11 @@ public class GenericQuiz implements Quiz{
         String panelName = category + " Q#" + questionNum;
         JLabel panelNameLabel = new JLabel(panelName);
 
+        panelNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         panel.add(panelNameLabel);
-
+        System.out.println("ScrambledQuiz created");
         return panel;
 
     }
@@ -51,8 +68,9 @@ public class GenericQuiz implements Quiz{
         JLabel questionTextLabel = new JLabel(questionText);
         questionTextLabel.setFont(questionTextLabel.getFont().deriveFont(Font.PLAIN, 30));
         questionTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+
         panel.add(questionTextLabel);
+
 
         JRadioButton optionAButton = new JRadioButton(options.get(0));
         optionAButton.setFont(optionAButton.getFont().deriveFont(Font.PLAIN, 20));
@@ -77,11 +95,15 @@ public class GenericQuiz implements Quiz{
         group.add(optionCButton);
         group.add(optionDButton);
 
+       
+
         panel.add(optionAButton);
         panel.add(optionBButton);
         panel.add(optionCButton);
         panel.add(optionDButton);
 
+
+        
     }
 
     public void createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum) {

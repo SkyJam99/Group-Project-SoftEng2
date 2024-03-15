@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.swing.*;
 
 import QuizSceneFactory.QuizSceneInterface;
-
+import QuizStrategy.*;
 public class EntertainmentQuiz implements QuizSceneInterface {
     @Override
     public JPanel initializeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
