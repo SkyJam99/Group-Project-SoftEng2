@@ -4,7 +4,7 @@ import javax.swing.*;
 /**
  * Interface Name: QuizSceneInterface
  * Purpose: Defines a contract for quiz scene creation using the Factory design pattern.
- * Usage: Implemented by classes for specific quiz scene types, ensuring a standardized initialization method.
+ * Usage: Implemented by classes for specific quiz scene types, ensuring initialization
  */
 public interface QuizSceneInterface {
     /**
@@ -19,7 +19,7 @@ public interface QuizSceneInterface {
      *     - optionD (String): Text for option D.
      *     - correctOption (String): The correct option for the question.
      * Returns: JPanel - A JPanel containing the quiz scene.
-     * Usage Example: Implemented by specific scene classes for scene creation.
+     * Usage Example: Implemented by some scene classes.
      */
     JPanel initializeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption);
 }

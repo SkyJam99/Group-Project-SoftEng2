@@ -27,9 +27,6 @@ public class ScoreReceiver {
     /**
      * Method Name: addScore
      * Purpose: Calculates and adds points to the current score based on the time taken to answer the current question.
-     * Parameters: None
-     * Returns: None
-     * Usage Example: scoreReceiver.addScore(); // Adds points after a question is answered correctly
      */
     public void addScore() {
         endTime = System.currentTimeMillis();
@@ -46,9 +43,6 @@ public class ScoreReceiver {
     /**
      * Method Name: addScoreHalf
      * Purpose: Adds half the points calculated based on the time taken to answer the current question, to mess with the user
-     * Parameters: None
-     * Returns: None
-     * Usage Example: scoreReceiver.addScoreHalf(); // Adds half points for a partially correct answer
      */
     public void addScoreHalf() {
         endTime = System.currentTimeMillis();
@@ -62,12 +56,9 @@ public class ScoreReceiver {
         updateLastQuestionTime();
     }
 
-        /**
+    /**
      * Method Name: addScoreLessTime
      * Purpose: Adds the points calculated based on the time taken to answer the current question using half the time, to mess with the user
-     * Parameters: None
-     * Returns: None
-     * Usage Example: scoreReceiver.addScoreLessTime(); // Adds half points for a partially correct answer
      */
     public void addScoreLessTime() {
         endTime = System.currentTimeMillis();
