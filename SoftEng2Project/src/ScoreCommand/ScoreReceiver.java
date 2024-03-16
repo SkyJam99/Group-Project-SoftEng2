@@ -77,7 +77,7 @@ public class ScoreReceiver {
      * Purpose: Updates the timestamp of the last question to the current time.
      * Parameters: None
      * Returns: None
-     * Usage Example: (Automatically called within addScore and addScoreHalf methods to reset the timer for the next question)
+     * Usage Example: Automatically called within addScore methods to reset the timer for the next question
      */
     public void updateLastQuestionTime() {
         lastQuestionTime = System.currentTimeMillis();

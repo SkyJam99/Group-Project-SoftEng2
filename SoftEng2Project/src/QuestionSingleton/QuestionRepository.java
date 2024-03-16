@@ -1,8 +1,15 @@
-package app;
+package QuestionSingleton;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class Name: QuestionRepository
+ * Purpose: Manages and provides access to a collection of quiz questions across various categories,
+ *          ensuring there is a single shared instance of the repository.
+ *          It follows the Singleton design pattern to manage question data for the Spooky Quiz game.
+ * Usage: Utilized to fetch category-specific questions for the game.
+ */
 public class QuestionRepository {
     private static QuestionRepository instance;
 
@@ -10,8 +17,20 @@ public class QuestionRepository {
     private List<Question> historyQuestions;
     private List<Question> entertainmentQuestions;
 
+    /**
+     * Constructor: QuestionRepository (private)
+     * Purpose: Initializes the repository by loading question sets for each category.
+     */
     private QuestionRepository() { initializeQuestions(); }
 
+
+    /**
+     * Method Name: getInstance
+     * Purpose: Provides the singleton instance of the QuestionRepository, creating it if it does not exist.
+     * Parameters: None
+     * Returns: QuestionRepository - The single instance of QuestionRepository.
+     * Usage Example: QuestionRepository repo = QuestionRepository.getInstance();
+     */
     public static synchronized QuestionRepository getInstance() {
         if (instance == null) {
             instance = new QuestionRepository();
@@ -19,6 +38,10 @@ public class QuestionRepository {
         return instance;
     }
 
+    /**
+     * Method Name: initializeQuestions
+     * Purpose: Initializes and populates the question lists for each quiz category.
+     */
     private void initializeQuestions() {
         scienceQuestions = new ArrayList<>();
         addScienceQuestions();
@@ -30,6 +53,10 @@ public class QuestionRepository {
         addEntertainmentQuestions();
     }
 
+    /**
+     * Method Name: addScienceQuestions
+     * Purpose: Initializes and populates the science question list
+     */
     private void addScienceQuestions() {
         scienceQuestions.add(new Question("What is the chemical symbol for gold?", "Au", "Gd", "Ag", "Hg", "Au"));
         scienceQuestions.add(new Question("What is the powerhouse of the cell?", "Mitochondria", "Nucleus", "Membrane", "Chloroplast", "Mitochondria"));
@@ -43,6 +70,10 @@ public class QuestionRepository {
         scienceQuestions.add(new Question("How many colors are in a rainbow?", "7", "5", "6", "8", "7"));
     }
 
+    /**
+     * Method Name: addHistoryQuestions
+     * Purpose: Initializes and populates the history question list
+     */
     private void addHistoryQuestions() {
         historyQuestions.add(new Question("Who was the first President of the United States?", "George Washington", "John Adams", "Thomas Jefferson", "James Madison", "George Washington"));
         historyQuestions.add(new Question("Who was the leader of the Soviet Union during World War II?", "Joseph Stalin", "Vladimir Lenin", "Georgy Malenkov", "Nikita Khrushchev", "Joseph Stalin"));
@@ -56,6 +87,10 @@ public class QuestionRepository {
         historyQuestions.add(new Question("Where was the city of Babylon located with respect to modern countries?", "Iraq", "Iran", "Syria", "Saudi Arabia", "Iraq"));
     }
 
+    /**
+     * Method Name: addEntertainmentQuestions
+     * Purpose: Initializes and populates the entertainment question list
+     */
     private void addEntertainmentQuestions() {
         entertainmentQuestions.add(new Question("Which actor played the character of Tony Stark in the Marvel Cinematic Universe?", "Robert Downey Jr.", "Chris Hemsworth", "Chris Evans", "Mark Ruffalo", "Robert Downey Jr."));
         entertainmentQuestions.add(new Question("What is the highest-grossing animated film of all time?", "The Lion King (2019)", "Frozen", "The Super Mario Bros. Movie", "Minions", "The Lion King (2019)"));
@@ -69,18 +104,36 @@ public class QuestionRepository {
         entertainmentQuestions.add(new Question("When did the first episode of Saturday Night Live air?", "1975", "1970", "1973", "1978", "1975"));
     }
 
+    /**
+     * Method Name: getScienceQuestions
+     * Purpose: Retrieves a shuffled list of science questions.
+     * Parameters: None
+     * Returns: List<Question> - A shuffled list of science questions.
+     */
     public List<Question> getScienceQuestions() { 
         List<Question> scienceQuestionsShuffled = scienceQuestions;
         Collections.shuffle(scienceQuestionsShuffled);
         return scienceQuestionsShuffled;
     }
 
+    /**
+     * Method Name: getHistoryQuestions
+     * Purpose: Retrieves a shuffled list of history questions.
+     * Parameters: None
+     * Returns: List<Question> - A shuffled list of history questions.
+     */
     public List<Question> getHistoryQuestions() { 
         List<Question> historyQuestionsShuffled = historyQuestions;
         Collections.shuffle(historyQuestionsShuffled);
         return historyQuestionsShuffled;
     }
 
+    /**
+     * Method Name: getEntertainmentQuestions
+     * Purpose: Retrieves a shuffled list of entertainment questions.
+     * Parameters: None
+     * Returns: List<Question> - A shuffled list of entertainment questions.
+     */
     public List<Question> getEntertainmentQuestions() { 
         List<Question> entertainmentQuestionsShuffled = entertainmentQuestions;
         Collections.shuffle(entertainmentQuestionsShuffled);

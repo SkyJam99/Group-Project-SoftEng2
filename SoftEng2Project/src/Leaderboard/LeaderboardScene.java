@@ -1,16 +1,22 @@
 package Leaderboard;
 
-import javax.swing.JButton;
-
 import app.Application;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
+/**
+ * Class Name: LeaderboardScene
+ * Purpose: Displays the leaderboard scene for the Spooky Quiz game.
+ * Usage: This class is instantiated to show the leaderboard screen, where scores are displayed and the user can return to the main menu.
+ */
 public class LeaderboardScene extends JPanel {
     static JTextArea leaderboardText = new JTextArea();
+    /**
+     * Constructor: LeaderboardScene
+     * Purpose: Initializes the LeaderboardScene.
+     */
     public LeaderboardScene(){
 
         setLayout(new GridLayout(1,3));
@@ -72,7 +78,13 @@ public class LeaderboardScene extends JPanel {
         add(new JPanel());
 
     }
-    //method for displaying the scores from the text file
+    /**
+     * Method Name: updateScores
+     * Purpose: Retrieves and formats the leaderboard scores for display in the leaderboard text area.
+     * Parameters: None
+     * Returns: String - The formatted scores for display.
+     * Usage Example: leaderboardText.setText(updateScores()); // Updates the leaderboard text area with the latest scores.
+     */
     public static String updateScores() {
         //using rileys leaderboard code
         String[][] scores = Leaderboard.getScores();
@@ -87,6 +99,10 @@ public class LeaderboardScene extends JPanel {
         return sb.toString();
     }
 
+    /**
+     * Method Name: updateLeaderboard
+     * Purpose: Updates the text area of the leaderboard with the latest scores. 
+     */
     public static void updateLeaderboard() {
         leaderboardText.setText(updateScores());
     }

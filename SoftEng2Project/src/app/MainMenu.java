@@ -1,13 +1,25 @@
 package app;
-import javax.swing.JFrame;
-import javax.swing.JButton;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Class Name: MainMenu
+ * Purpose: Provides the main menu interface for the Spooky Quiz game, allowing users to navigate
+ *          to different parts of the application.
+ * Usage: This class is used to create and display the main menu screen when the application starts or when
+ *        the user returns to the main menu from other parts of the application.
+ */
 public class MainMenu extends JPanel {
+    
+    /**
+     * Constructor: MainMenu
+     * Purpose: Initializes the MainMenu panel by setting up the UI components for the main menu.
+     * Parameters:
+     *     - frame (JFrame): The main application frame to which this panel will be added. 
+     * Returns: An instance of MainMenu with all UI components set up for navigating the application.
+     */
     public MainMenu(JFrame frame){
-
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         Dimension buttonSize = new Dimension(200,50);
 

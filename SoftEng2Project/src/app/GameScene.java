@@ -3,7 +3,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Class Name: GameScene
+ * Purpose: Serves as the main panel for category selection within the Spooky Quiz game. It displays
+ *          the category options to the user, allowing them to choose the quiz category they want to play.
+ * Usage: This class is displayed when the user navigates to the category selection 
+ *        screen from the main menu.
+ */
 public class GameScene extends JPanel {
+    
+     /**
+     * Constructor: GameScene
+     * Purpose: Initializes the GameScene panel by setting up the category selection UI.
+     * Parameters: None
+     * Returns: An instance of GameScene with all UI components set up for category selection.
+     */
     public GameScene(){
         Dimension buttonSize = new Dimension(200,50);
         JLabel categoryText = new JLabel("Select your category!!");
