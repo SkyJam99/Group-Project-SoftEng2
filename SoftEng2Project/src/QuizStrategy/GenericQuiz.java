@@ -75,7 +75,7 @@ public class GenericQuiz implements Quiz{
      * Method Name: shuffleOptions
      * Purpose: Shuffles the given options and returns them as a list.
      * Parameters:
-     *     - options (String...): Varargs parameter for question options.
+     *     - options (String...): parameter for question options.
      * Returns: A list of shuffled options.
      */
     public List<String> shuffleOptions(String... options) {
@@ -119,12 +119,17 @@ public class GenericQuiz implements Quiz{
         optionDButton.setFont(optionDButton.getFont().deriveFont(Font.PLAIN, 20));
         optionDButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        optionAButton.setBackground(new Color(119, 186, 153));
+        optionBButton.setBackground(new Color(119, 186, 153));
+        optionCButton.setBackground(new Color(119, 186, 153));
+        optionDButton.setBackground(new Color(119, 186, 153));
 
         ButtonGroup group = new ButtonGroup();
         group.add(optionAButton);
         group.add(optionBButton);
         group.add(optionCButton);
         group.add(optionDButton);
+        
 
         panel.add(optionAButton);
         panel.add(optionBButton);
@@ -150,6 +155,8 @@ public class GenericQuiz implements Quiz{
         submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
         //aligning in the center
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitButton.setForeground(new Color(239, 240, 209));
+        submitButton.setBackground(new Color(38, 39, 48));
         panel.add(submitButton);
     }
 

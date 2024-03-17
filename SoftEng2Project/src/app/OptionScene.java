@@ -2,7 +2,7 @@ package app;
 import javax.swing.*;
 
 import java.awt.Color;
-import java.awt.event.*;
+//import java.awt.event.*;
 
 /**
  * Class Name: OptionScene
@@ -17,7 +17,7 @@ public class OptionScene extends JPanel {
      */
     public OptionScene(){
         setBackground(new Color(119, 186, 153));
-        JPanel OptionScene = new JPanel();
+        //JPanel OptionScene = new JPanel();
         add(new JLabel("Options"));
         MenuButton menuButton = new MenuButton("Exit","Main Menu");
         add(menuButton);
