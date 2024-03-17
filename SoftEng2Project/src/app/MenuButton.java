@@ -25,11 +25,26 @@ public class MenuButton extends JButton {
     public MenuButton(String text, String sceneName){
         super(text);
         this.sceneName = sceneName;
-        addActionListener(new ActionListener(){
+        initButton(); // Initialize button appearance
+    }
+
+    /**
+     * Method Name: initButton
+     * Purpose: Constructs a MenuButton with specified formatting
+     * Returns: None
+     */
+    private void initButton() {
+
+        this.setForeground(new Color(239, 240, 209)); //text color
+        this.setBackground(new Color(38, 39, 48)); 
+        this.setFont(new Font("Tahoma", Font.BOLD, 20));
+
+        // Set the button's action listener
+        addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 Application.showScene(sceneName);
-                Application.score++;
+                Application.score++; 
                 System.out.println(Application.score);
             }
         });

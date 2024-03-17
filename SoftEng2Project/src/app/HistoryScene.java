@@ -15,6 +15,7 @@ public class HistoryScene extends JPanel {
      * Purpose: Constructs the HistoryScene with all UI components setup
      */
     public HistoryScene(){
+        setBackground(new Color(119, 186, 153));
         Dimension buttonSize = new Dimension(200,50);
         JLabel historyText = new JLabel("How well do you know your history?");
 

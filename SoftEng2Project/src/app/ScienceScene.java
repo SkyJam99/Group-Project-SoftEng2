@@ -15,7 +15,7 @@ public class ScienceScene extends JPanel {
      * Purpose: Constructs the ScienceScene with all UI components setup
      */
     public ScienceScene(){
-
+        setBackground(new Color(119, 186, 153));
         Dimension buttonSize = new Dimension(200,50);
 
         JLabel scienceText = new JLabel("Feeling sciency? Test your knowledge!");

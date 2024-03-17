@@ -20,6 +20,8 @@ public class MainMenu extends JPanel {
      * Returns: An instance of MainMenu with all UI components set up for navigating the application.
      */
     public MainMenu(JFrame frame){
+        setBackground(new Color(119, 186, 153));
+
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         Dimension buttonSize = new Dimension(200,50);
 

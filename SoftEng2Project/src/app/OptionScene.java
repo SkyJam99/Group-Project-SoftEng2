@@ -1,5 +1,7 @@
 package app;
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.event.*;
 
 /**
@@ -14,6 +16,7 @@ public class OptionScene extends JPanel {
      * Purpose: Initializes the OptionScene with UI components.
      */
     public OptionScene(){
+        setBackground(new Color(119, 186, 153));
         JPanel OptionScene = new JPanel();
         add(new JLabel("Options"));
         MenuButton menuButton = new MenuButton("Exit","Main Menu");

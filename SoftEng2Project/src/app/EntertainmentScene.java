@@ -16,6 +16,8 @@ public class EntertainmentScene extends JPanel {
      * Purpose: Constructs the EntertainmentScene with all UI components setup
      */
     public EntertainmentScene(){
+        setBackground(new Color(119, 186, 153));
+
         Dimension buttonSize = new Dimension(200,50);
         JLabel entertainmentText = new JLabel("How well do you know your entertainment?");
 

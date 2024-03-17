@@ -37,7 +37,7 @@ public class GenericQuiz implements Quiz{
      */
 
     public JPanel quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) {
-
+        
         JPanel panel = createPanel(category, questionNum);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.add(Box.createVerticalGlue());

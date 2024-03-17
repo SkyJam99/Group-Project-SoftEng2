@@ -1,5 +1,6 @@
 package QuizSceneFactory.ConcreteProducts;
 
+import java.awt.Color;
 import java.util.Random;
 
 import javax.swing.*;
@@ -46,6 +47,7 @@ public class ScienceQuiz implements QuizSceneInterface {
         }
 
         JPanel panel = q.quizConstructor("Science", questionNum, questionText, optionA, optionB, optionC, optionD, correctOption);
+        panel.setBackground(new Color(119, 186, 153));
         return panel;
     }
 }

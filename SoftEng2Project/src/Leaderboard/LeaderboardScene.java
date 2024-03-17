@@ -18,11 +18,11 @@ public class LeaderboardScene extends JPanel {
      * Purpose: Initializes the LeaderboardScene.
      */
     public LeaderboardScene(){
-
+        
         setLayout(new GridLayout(1,3));
 
         JPanel contentPanel = new JPanel();
-
+        
         //create panels for each part of the grid layout in order to edit the indiviudal components while maintaining the grid
         contentPanel.setLayout(new GridLayout(3,1));
         JPanel buttonPanel = new JPanel();
