@@ -40,10 +40,13 @@ public class GenericQuiz implements Quiz{
         
         JPanel panel = createPanel(category, questionNum);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
         panel.add(Box.createVerticalGlue());
 
         List<String> shuffledOptions = shuffleOptions(optionA, optionB, optionC, optionD);
+
         createQuestionAndOptions(panel, questionText, shuffledOptions);
+
         createSubmitButton(panel, shuffledOptions, correctOption, category, questionNum);
 
         panel.add(Box.createVerticalGlue());
@@ -73,7 +76,7 @@ public class GenericQuiz implements Quiz{
 
     /**
      * Method Name: shuffleOptions
-     * Purpose: Shuffles the given options and returns them as a list.
+     * Purpose: Shuffles the options and returns them as a list.
      * Parameters:
      *     - options (String...): parameter for question options.
      * Returns: A list of shuffled options.
@@ -153,10 +156,11 @@ public class GenericQuiz implements Quiz{
         JButton submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(30,30));
         submitButton.addActionListener(e -> handleSubmitAction(options, correctOption, category, questionNum, panel));
-        //aligning in the center
+
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         submitButton.setForeground(new Color(239, 240, 209));
         submitButton.setBackground(new Color(38, 39, 48));
+
         panel.add(submitButton);
     }
 
@@ -189,11 +193,13 @@ public class GenericQuiz implements Quiz{
      * Returns: The ButtonGroup if found, otherwise null.
      */
     public ButtonGroup findButtonGroup(Container container) {
+
         for (Component comp : container.getComponents()) {
             if (comp instanceof JRadioButton) {
                 return ((JRadioButton) comp).getModel().getGroup();
             }
         }
+
         return null;
     }
 
@@ -207,7 +213,9 @@ public class GenericQuiz implements Quiz{
      */
     public int getSelectedOptionIndex(ButtonGroup group, Container container) {
         int i = 0;
+
         Enumeration<AbstractButton> buttons = group.getElements();
+
         while (buttons.hasMoreElements()) {
             AbstractButton button = buttons.nextElement();
             if (button.isSelected()) {
@@ -215,6 +223,7 @@ public class GenericQuiz implements Quiz{
             }
             i++;
         }
+
         return -1; // Should not happen
     }
 
@@ -264,7 +273,9 @@ public class GenericQuiz implements Quiz{
         if (playerName != null && !playerName.trim().isEmpty()) {
             Leaderboard.addNewScore(playerName, QuizConstructor.scoreReceiver.getScore());
         }
+        
         LeaderboardScene.updateLeaderboard();
+
         Application.showScene("Leaderboard Scene");
     }
 }

@@ -88,7 +88,7 @@ public interface Quiz {
     
     /**
      * Method Name: findButtonGroup
-     * Purpose: Finds the ButtonGroup associated with the radio buttons in the panel.
+     * Purpose: Finds the ButtonGroup in the panel.
      * Parameters:
      *     - container (Container): The container to search within.
      * Returns: The ButtonGroup if found, otherwise null.

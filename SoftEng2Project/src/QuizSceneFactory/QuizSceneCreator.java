@@ -30,7 +30,7 @@ public abstract class QuizSceneCreator extends JPanel {
      * Method Name: constructScene
      * Purpose: Constructs an instance of a quiz scene. This method is intended to be implemented by subclasses to define specific types of quiz scenes.
      * Parameters: None.
-     * Returns: QuizSceneInterface - An instance of a class that implements QuizSceneInterface, representing a specific type of quiz scene.
+     * Returns: QuizSceneInterface - An instance of a class that implements QuizSceneInterface
      */
     public abstract QuizSceneInterface constructScene();
 }

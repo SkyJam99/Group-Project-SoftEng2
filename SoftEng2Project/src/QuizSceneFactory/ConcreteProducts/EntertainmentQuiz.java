@@ -50,6 +50,7 @@ public class EntertainmentQuiz implements QuizSceneInterface {
         JPanel panel = q.quizConstructor("Entertainment", questionNum, questionText, optionA, optionB, optionC, optionD, correctOption);
 
         panel.setBackground(new Color(119, 186, 153));
+        
         return panel;
     }
 }

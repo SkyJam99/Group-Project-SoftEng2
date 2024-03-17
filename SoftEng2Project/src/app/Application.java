@@ -14,18 +14,11 @@ import java.awt.*;
  * Usage: This class is the entry point of the Quiz Game, it initializes the game's GUI and leaderboard
  */
 public class Application {
-
-    //Can we get rid of these variables?
-    public static int score = 0;
-    public static int timer = 0;
-
-    
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel parentPanel = new JPanel(cardLayout);
     
-
     /**
-     * Method Name: Application (Constructor)
+     * Method Name: Application 
      * Purpose: Sets up the main game window, initializes the game scenes, and displays the main menu.
      * Parameters: None.
      * Returns: None.
@@ -41,7 +34,7 @@ public class Application {
             //Initialize Leaderboard
             Leaderboard.initalizeLeaderboard();
 
-            //adding scene
+            //adding scenes
             addScene(new MainMenu(frame), "Main Menu");
             addScene(new GameScene(), "Game Scene");
             addScene(new LeaderboardScene(), "Leaderboard Scene");
@@ -49,7 +42,6 @@ public class Application {
             addScene(new HistoryScene(), "History Scene");
             addScene(new ScienceScene(), "Science Scene");
             addScene(new EntertainmentScene(), "Entertainment Scene");
-
 
             frame.add(parentPanel);
 

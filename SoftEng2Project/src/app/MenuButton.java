@@ -44,8 +44,6 @@ public class MenuButton extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Application.showScene(sceneName);
-                Application.score++; 
-                System.out.println(Application.score);
             }
         });
     }

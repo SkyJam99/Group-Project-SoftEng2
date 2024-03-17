@@ -35,6 +35,7 @@ public class QuestionRepository {
         if (instance == null) {
             instance = new QuestionRepository();
         }
+        
         return instance;
     }
 
@@ -113,6 +114,7 @@ public class QuestionRepository {
     public List<Question> getScienceQuestions() { 
         List<Question> scienceQuestionsShuffled = scienceQuestions;
         Collections.shuffle(scienceQuestionsShuffled);
+
         return scienceQuestionsShuffled;
     }
 
@@ -125,6 +127,7 @@ public class QuestionRepository {
     public List<Question> getHistoryQuestions() { 
         List<Question> historyQuestionsShuffled = historyQuestions;
         Collections.shuffle(historyQuestionsShuffled);
+
         return historyQuestionsShuffled;
     }
 
@@ -137,6 +140,7 @@ public class QuestionRepository {
     public List<Question> getEntertainmentQuestions() { 
         List<Question> entertainmentQuestionsShuffled = entertainmentQuestions;
         Collections.shuffle(entertainmentQuestionsShuffled);
+
         return entertainmentQuestionsShuffled;
     }
 }
