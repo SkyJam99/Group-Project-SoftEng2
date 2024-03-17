@@ -20,7 +20,7 @@ public class GameScene extends JPanel {
      */
     public GameScene(){
         setBackground(new Color(119, 186, 153));
-        Dimension buttonSize = new Dimension(200,50);
+        Dimension buttonSize = new Dimension(250,50);
         JLabel categoryText = new JLabel("Select your category!!");
         categoryText.setFont(categoryText.getFont().deriveFont(Font.PLAIN, 40));
         categoryText.setAlignmentX(Component.CENTER_ALIGNMENT);

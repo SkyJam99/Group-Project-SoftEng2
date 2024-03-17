@@ -46,8 +46,9 @@ public class LeaderboardScene extends JPanel {
         textPanel.setBackground(new Color(119, 186, 153));
 
 
-        JLabel title = new JLabel("Leaderboards");
+        JLabel title = new JLabel("Leaderboard");
         title.setFont(new Font("Tahoma", Font.BOLD, 20));
+
         JLabel subTitle = new JLabel("SHOOT FOR HIGH SCORE!");
         subTitle.setFont(new Font("Tahoma", Font.BOLD, 16));
 

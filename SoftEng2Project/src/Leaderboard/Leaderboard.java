@@ -113,7 +113,7 @@ public class Leaderboard {
             FILE_PATH = System.getProperty("user.dir") + "/scores.txt";
         }
 
-        System.out.println(FILE_PATH);
+        //System.out.println(FILE_PATH);
         //Check if the scoresFile exists, if not create it
         File scoresFile = new File(FILE_PATH);
         if (!scoresFile.exists()) {
@@ -131,8 +131,30 @@ public class Leaderboard {
 
     }
 
+    /**
+     * Method Name: resetLeaderboard
+     * Purpose: Resets the leaderboard file to default scores.
+     * Usage Example: Leaderboard.resetLeaderboard();
+     */
+    public static void resetLeaderboard(){
+        File scoresFile = new File(FILE_PATH);
 
-    
+        if (scoresFile.exists()) {
+            try {
+                scoresFile.delete();
+                scoresFile.createNewFile();
+
+                FileWriter writer = new FileWriter(scoresFile);
+                for (int i = 0; i < 10; i++) {
+                    writer.write("Empty 0\n");
+                }
+
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("Error while creating file");
+            }
+        }
+    }
 
 
 

@@ -43,7 +43,7 @@ public class MainMenu extends JPanel {
         gameButton.setFont(gameButton.getFont().deriveFont(Font.PLAIN, 20));
 
 
-        MenuButton leaderboardButton = new MenuButton("Leaderboards", "Leaderboard Scene");
+        MenuButton leaderboardButton = new MenuButton("Leaderboard", "Leaderboard Scene");
         leaderboardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         leaderboardButton.setPreferredSize(buttonSize);
         leaderboardButton.setFont(leaderboardButton.getFont().deriveFont(Font.PLAIN, 20));
