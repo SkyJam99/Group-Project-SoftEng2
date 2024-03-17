@@ -31,6 +31,7 @@ public class GameScene extends JPanel {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
         contentPanel.add(Box.createHorizontalGlue());
+        contentPanel.setBackground(new Color(119, 186, 153));
 
         add(categoryText);
 

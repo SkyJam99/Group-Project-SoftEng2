@@ -17,67 +17,59 @@ public class LeaderboardScene extends JPanel {
      * Constructor: LeaderboardScene
      * Purpose: Initializes the LeaderboardScene.
      */
-    public LeaderboardScene(){
-        
-        setLayout(new GridLayout(1,3));
+    public LeaderboardScene() {
+    setLayout(new GridLayout(1, 3));
 
-        JPanel contentPanel = new JPanel();
-        
-        //create panels for each part of the grid layout in order to edit the indiviudal components while maintaining the grid
-        contentPanel.setLayout(new GridLayout(3,1));
-        JPanel buttonPanel = new JPanel();
-        JPanel labelPanel = new JPanel();
-        JPanel textPanel = new JPanel();
+    // Set the background color of the LeaderboardScene
+    setBackground(new Color(119, 186, 153));
 
+    // Initialize panels
+    JPanel leftFillerPanel = new JPanel();
+    JPanel contentPanel = new JPanel(new GridLayout(3, 1));
+    JPanel rightFillerPanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
+    JPanel labelPanel = new JPanel();
+    JPanel textPanel = new JPanel();
 
-        JLabel title = new JLabel("Leaderboards");
-        title.setFont(new Font("Tahoma",Font.BOLD, 20));
+    // Set background for all panels
+    leftFillerPanel.setBackground(new Color(119, 186, 153));
+    contentPanel.setBackground(new Color(119, 186, 153));
+    rightFillerPanel.setBackground(new Color(119, 186, 153));
+    buttonPanel.setBackground(new Color(119, 186, 153));
+    labelPanel.setBackground(new Color(119, 186, 153));
+    textPanel.setBackground(new Color(119, 186, 153));
 
-        JLabel subTitle = new JLabel("SHOOT FOR HIGH SCORE!");
-        subTitle.setFont(new Font("Tahoma",Font.BOLD, 16));
+    // Configure components
+    JLabel title = new JLabel("Leaderboards");
+    title.setFont(new Font("Tahoma", Font.BOLD, 20));
+    JLabel subTitle = new JLabel("SHOOT FOR HIGH SCORE!");
+    subTitle.setFont(new Font("Tahoma", Font.BOLD, 16));
 
-        subTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-        subTitle.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+    JButton menuButton = new JButton("Menu");
+    menuButton.setPreferredSize(new Dimension(200, 50));
+    menuButton.addActionListener(e -> Application.showScene("Main Menu"));
 
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        title.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+    leaderboardText.setPreferredSize(new Dimension(100, 700));
+    leaderboardText.setEditable(false);
+    leaderboardText.setText(updateScores());
 
-        JButton menuButton = new JButton("Menu");
-        menuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        menuButton.setPreferredSize(new Dimension(200,50));
+    // Add components to their respective panels
+    labelPanel.add(title);
+    labelPanel.add(subTitle);
+    textPanel.add(leaderboardText);
+    buttonPanel.add(menuButton);
 
-        leaderboardText.setPreferredSize(new Dimension(100,700));
-        leaderboardText.setEditable(false);
+    // Add panels to contentPanel
+    contentPanel.add(labelPanel);
+    contentPanel.add(textPanel);
+    contentPanel.add(buttonPanel);
 
-        menuButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                Application.showScene("Main Menu");
+    // Add panels to the LeaderboardScene
+    add(leftFillerPanel);
+    add(contentPanel);
+    add(rightFillerPanel);
+}
 
-            }
-        });
-
-
-        leaderboardText.setText(updateScores());
-        add(new JPanel());
-
-        labelPanel.add(title);
-        labelPanel.add(subTitle);
-
-        //adding components to each panel, then adding all panels in order for the grid panel.
-        textPanel.add(leaderboardText);
-        buttonPanel.add(menuButton);
-
-        contentPanel.add(labelPanel);
-        contentPanel.add(textPanel);
-        contentPanel.add(buttonPanel);
-
-
-        //adding content panel to the LeaderboardScene (the extra panel is to center it in the middle of the window)
-        add(contentPanel);
-        add(new JPanel());
-
-    }
     /**
      * Method Name: updateScores
      * Purpose: Retrieves and formats the leaderboard scores for display in the leaderboard text area.

@@ -28,7 +28,7 @@ public class HistoryScene extends JPanel {
         menuButton.setFont(menuButton.getFont().deriveFont(Font.PLAIN, 30));
 
         menuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+        
 
         menuButton.addActionListener(new ActionListener(){
             @Override
@@ -43,6 +43,8 @@ public class HistoryScene extends JPanel {
         startButton.setPreferredSize(buttonSize);
         startButton.setFont(menuButton.getFont().deriveFont(Font.PLAIN, 30));
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        
 
         startButton.addActionListener(new ActionListener(){
             @Override
@@ -51,6 +53,10 @@ public class HistoryScene extends JPanel {
             }
         });
 
+        menuButton.setForeground(new Color(239, 240, 209));
+        menuButton.setBackground(new Color(38, 39, 48));
+        startButton.setForeground(new Color(239, 240, 209));
+        startButton.setBackground(new Color(38, 39, 48));
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

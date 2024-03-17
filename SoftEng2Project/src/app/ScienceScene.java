@@ -49,6 +49,11 @@ public class ScienceScene extends JPanel {
             }
         });
 
+        menuButton.setForeground(new Color(239, 240, 209));
+        menuButton.setBackground(new Color(38, 39, 48));
+        startButton.setForeground(new Color(239, 240, 209));
+        startButton.setBackground(new Color(38, 39, 48));
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(Box.createVerticalGlue());

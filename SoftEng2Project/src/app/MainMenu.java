@@ -60,6 +60,8 @@ public class MainMenu extends JPanel {
         closeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         closeButton.setPreferredSize(buttonSize);
         closeButton.setFont(closeButton.getFont().deriveFont(Font.PLAIN, 20));
+        closeButton.setForeground(new Color(239, 240, 209)); //text color
+        closeButton.setBackground(new Color(38, 39, 48)); 
         closeButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
