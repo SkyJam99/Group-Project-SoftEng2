@@ -46,9 +46,11 @@ public class HistoryQuiz implements QuizSceneInterface {
             q = new GenericQuiz();
         }
 
-        JPanel panel = q.quizConstructor("History", questionNum, questionText, optionA, optionB, optionC, optionD, correctOption);
+        Context context = new Context(q);
+
+        JPanel panel = context.executeStrategy("History", questionNum, questionText, optionA, optionB, optionC, optionD, correctOption);
         panel.setBackground(new Color(119, 186, 153));
-        
+
         return panel;
     }
 }
