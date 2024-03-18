@@ -1,0 +1,30 @@
+@startuml QuestionSingleton_diagram
+
+package QuestionSingleton {
+    class Question {
+        +Question(String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) : Constructor
+    }
+
+    class QuestionFactory {
+        +createQuestion(String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): Question
+    }
+    QuestionFactory ..> Question : dependency
+
+    class QuestionRepository {
+        +QuestionRepository(): private Constructor
+        +getInstance(): static synchronized method
+        +initalizeQuestions(): private method
+        +addScienceQuestions(): private method
+        +addHistoryQuestions(): private method
+        +addEntertainmentQuestions(): private method
+        +getScienceQuestions(): public method
+        +getHistoryQuestions(): public method
+        +getEntertainmentQuestions(): public method
+    }
+    QuestionRepository ..> Question : dependency
+    QuestionRepository ..> QuestionFactory : dependency
+}
+
+
+
+@enduml

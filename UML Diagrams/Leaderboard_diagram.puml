@@ -1,0 +1,21 @@
+@startuml Leaderboard_diagram
+
+
+
+package Leaderboard {
+    class Leaderboard {
+        +getScores(): int
+        +addNewScores(String name, int score): static void method
+        +initalizeLeaderboard(): static void method
+        +resetLeaderboard(): static void method
+    }
+
+    class LeaderboardScene implements JPanel {
+        +updateScores(): static method
+        +updateLeaderboard(): static void method
+    }
+    LeaderboardScene ..> MenuButton : dependency
+    LeaderboardScene ..> Leaderboard : dependency
+}
+
+@enduml

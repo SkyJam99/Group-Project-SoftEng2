@@ -1,0 +1,67 @@
+@startuml QuizSceneFactory_diagram
+
+
+package QuizSceneFactory {
+    class EntertainmentCreator implements QuizSceneCreator {
+        constructScene(): method - returns EntertainmentQuiz
+    }
+    EntertainmentCreator ..> EntertainmentQuiz : dependency
+    EntertainmentCreator ..> QuizSceneInterface : dependency
+
+    class HistoryCreator implements QuizSceneCreator {
+        constructScene(): method
+    }
+    HistoryCreator ..> HistoryQuiz : dependency
+    HistoryCreator ..> QuizSceneInterface : dependency
+
+    class ScienceCreator implements QuizSceneCreator {
+        constructScene(): method - returns ScienceQuiz
+    }
+    ScienceCreator ..> ScienceQuiz : dependency
+    ScienceCreator ..> QuizSceneInterface : dependency
+
+    class EntertainmentQuiz implements QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption)
+    }
+    EntertainmentQuiz ..> Quiz : dependency
+    EntertainmentQuiz ..> Context : dependency
+    EntertainmentQuiz ..> PointModQuiz : dependency
+    EntertainmentQuiz ..> LessTimeQuiz : dependency
+    EntertainmentQuiz ..> JumbledQuiz : dependency
+    EntertainmentQuiz ..> GenericQuiz : dependency
+
+    class HistoryQuiz implements QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption)
+    }
+    HistoryQuiz ..> Quiz : dependency
+    HistoryQuiz ..> Context : dependency
+    HistoryQuiz ..> PointModQuiz : dependency
+    HistoryQuiz ..> LessTimeQuiz : dependency
+    HistoryQuiz ..> JumbledQuiz : dependency
+    HistoryQuiz ..> GenericQuiz : dependency
+
+    class ScienceQuiz implements QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption)
+    }
+    ScienceQuiz ..> Quiz : dependency
+    ScienceQuiz ..> Context : dependency
+    ScienceQuiz ..> PointModQuiz : dependency
+    ScienceQuiz ..> LessTimeQuiz : dependency
+    ScienceQuiz ..> JumbledQuiz : dependency
+    ScienceQuiz ..> GenericQuiz : dependency
+
+    class QuizSceneCreator implements JPanel {
+        +createScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): 
+        +constructScene(): abstract method
+    }
+    QuizSceneCreator ..> QuizSceneInterface : dependency
+
+    interface QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption):
+    }
+    
+    
+}
+
+
+@enduml

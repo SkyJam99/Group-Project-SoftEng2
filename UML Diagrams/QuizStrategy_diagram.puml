@@ -1,0 +1,91 @@
+@startuml QuizStrategy_diagram
+
+package QuizStrategy {
+    class Context {
+        +Context(Quiz strategy): Constructor
+        +setStrategy(Quiz strategy): method 
+        +executeStrategy(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): method
+    }
+    Context ..> Quiz : dependency
+
+    class GenericQuiz implements Quiz {
+        quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, string optionD, string correctOption): public method - constructs quiz scene.
+        createPanel(String category, int questionNum)
+        shuffleOptions(String... options)
+        createQuestionAndOptions(JPanel panel, String QuestionText, List<String> options)
+        createSubmitButton(JPanel panel, List<String> options, String category, String correctOption, int questionNum)
+        handleSubmitAction(List<String> options, String correctOption, int questionNum, JPanel panel)
+        findButtonGroup(Container container)
+        getSelectedOption(ButtonGroup group, Container container)
+        displayResultMessage(String selectedOption,  String correctOption,String category, int questionNum)
+        endGame(): void method
+    }
+    GenericQuiz ..> addScoreCommand : dependency
+    GenericQuiz ..> updateLastQuestionTimeCommand : dependency
+    GenericQuiz ..> Command : dependency
+
+
+    class JumbledQuiz implements Quiz {
+        quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, string optionD, string correctOption): public method - constructs quiz scene.
+        createPanel(String category, int questionNum)
+        shuffleOptions(String... options)
+        createQuestionAndOptions(JPanel panel, String QuestionText, List<String> options)
+        createSubmitButton(JPanel panel, List<String> options, String category, String correctOption, int questionNum)
+        handleSubmitAction(List<String> options, String correctOption, int questionNum, JPanel panel)
+        findButtonGroup(Container container)
+        getSelectedOption(ButtonGroup group, Container container)
+        displayResultMessage(String selectedOption,  String correctOption,String category, int questionNum)
+        endGame(): void method
+    }
+    JumbledQuiz ..> addScoreCommand : dependency
+    JumbledQuiz ..> updateLastQuestionTimeCommand : dependency
+    JumbledQuiz ..> Command : dependency
+
+    class LessTimeQuiz implements Quiz {
+        +quizConstructor(String, int, String, String, String, String, String, String): returns JPanel
+        +createPanel(String, int): returns JPanel
+        +shuffleOptions(String...): returns List
+        +createQuestionAndOptions(JPanel, String, List<String>): void method
+        +createSubmitButton(JPanel, List<String>, String, String, int): void method
+        +handleSubmitAction(List<String>, String, String, int, JPanel): void method
+        +findButtonGroup(Container): returns ButtonGroup
+        +getSelectedOptionIndex(ButtonGroup, Container): returns int
+        +displayResultMessage(String, String, String, int): void method
+        +endGame(): void method
+    }
+    LessTimeQuiz ..> addScoreLessTimeCommand : dependency
+    LessTimeQuiz ..> updateLastQuestionTimeCommand : dependency
+    LessTimeQuiz ..> Command : dependency
+
+    class PointModQuiz implements Quiz {
+        +quizConstructor(String, int, String, String, String, String, String, String): returns JPanel
+        +createPanel(String, int): returns JPanel
+        +shuffleOptions(String...): returns List
+        +createQuestionAndOptions(JPanel, String, List<String>): void method
+        +createSubmitButton(JPanel, List<String>, String, String, int): void method
+        +handleSubmitAction(List<String>, String, String, int, JPanel): void method
+        +findButtonGroup(Container): returns ButtonGroup
+        +getSelectedOptionIndex(ButtonGroup, Container): returns int
+        +displayResultMessage(String, String, String, int): void method
+        +endGame(): void method
+    }
+    PointModQuiz ..> addScoreHalfCommand : dependency
+    PointModQuiz ..> updateLastQuestionTimeCommand : dependency
+    PointModQuiz ..> Command : dependency
+
+    interface Quiz {
+        quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): construction method
+        createPanel(String category, int questionNum)
+        shuffleOptions(String... options): 
+        createQuestionAndOptions(JPanel panel, String questionText, List<String> options): void method
+        createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum): void method
+        handleSubmitAction(List<String> options, String correctOption, String category, int questionNum, JPanel panel): void method
+        findButtonGroup(Container container): 
+        getSelectedOptionIndex(ButtonGroup group, Container container): int method 
+        displayResultMessage(String selectedOption, String correctOption): void method
+        endGame(): void method
+    }
+}
+
+
+@enduml

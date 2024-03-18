@@ -1,0 +1,51 @@
+@startuml ScoreCommand_diagram
+
+package ScoreCommand {
+    class AddScoreCommand implements Command {
+        +AddScoreCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    AddScoreCommand ..> ScoreReceiver : dependency
+
+    class AddScoreHalfCommand implements Command {
+        +AddScoreHalfCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    AddScoreHalfCommand ..> ScoreReceiver : dependency
+
+    class AddScoreLessTimeCommand implements Command {
+        +AddScoreLessTimeCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    AddScoreLessTimeCommand ..> ScoreReceiver : dependency
+
+    interface Command {
+        execute(): void method
+    }
+
+    class InitScoreCommand implements Command {
+        +InitScoreCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    InitScoreCommand ..> ScoreReceiver : dependency
+
+    class ScoreReceiver {
+        +initScore(): void method
+        +addScore(): void method
+        +addScoreHalf(): void method
+        +addScoreLessTime(): void method
+        +updateLastQuestionTime(): void method
+        +getScore(): returns int
+        +getTotalTime(): returns int
+    }
+
+    class UpdateLastQuestionTimeCommand implements Command {
+        +UpdateLastQuestionTimeCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    UpdateLastQuestionTimeCommand ..> ScoreReceiver : dependency
+}
+
+
+
+@enduml

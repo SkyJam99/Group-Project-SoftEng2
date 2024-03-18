@@ -1,0 +1,320 @@
+@startuml
+
+
+
+package app {
+    class Application implements JPanel {
+        +Application(): Constructor
+        +showScene(String sceneName): static method
+        +addScene(JPanel scene, String sceneName): static method
+        +main(String[] args): static method
+    }
+    Application ..> MainMenu : dependency
+    Application ..> EntertainmentScene : dependency
+    Application ..> HistoryScene : dependency
+    Application ..> ScienceScene : dependency
+    Application ..> OptionScene : dependency
+    Application ..> LeaderboardScene : dependency
+    Application ..> GameScene : dependency
+    Application ..> Leaderboard : dependency
+    GameScene ..> MenuButton : dependency
+
+    class EntertainmentScene implements JPanel {
+        +EntertainmentScene(): Constructor
+    }
+    EntertainmentScene ..> MenuButton : dependency
+    EntertainmentScene ..> QuizConstructor : dependency
+    
+
+    class GameScene implements JPanel {
+        +GameScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+
+    class HistoryScene implements JPanel {
+        +HistoryScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+    HistoryScene ..> QuizConstructor : dependency
+
+    class MainMenu implements JPanel {
+        +MainMenu(JFrame frame): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+
+    class MenuButton implements JButton {
+        +MenuButton(String text, String sceneName): Constructor
+        +initButton(): private method
+    }
+    MenuButton ..> Application : dependency
+
+    class OptionScene implements JPanel {
+        +OptionScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+    OptionScene ..> LeaderboardScene : dependency
+
+
+    class QuizConstructor {
+        +buildQuiz(String category): static method
+    }
+    QuizConstructor ..> ScoreReceiver : dependency
+    QuizConstructor ..> QuestionRepository : dependency
+    QuizConstructor ..> Question : dependency
+    QuizConstructor ..> QuizSceneCreator : dependency
+    QuizConstructor ..> ScienceCreator : dependency
+    QuizConstructor ..> HistoryCreator : dependency
+    QuizConstructor ..> EntertainmentCreator : dependency
+    QuizConstructor ..> Command : dependency
+    QuizConstructor ..> InitScoreCommand : dependency
+    
+    
+
+    class ScienceScene implements JPanel {
+        +ScienceScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+    ScienceScene ..> QuizConstructor : dependency
+}
+
+
+
+package Leaderboard {
+    class Leaderboard {
+        +getScores(): int
+        +addNewScores(String name, int score): static void method
+        +initalizeLeaderboard(): static void method
+        +resetLeaderboard(): static void method
+    }
+
+    class LeaderboardScene implements JPanel {
+        +updateScores(): static method
+        +updateLeaderboard(): static void method
+    }
+    GameScene ..> MenuButton : dependency
+}
+
+package QuestionSingleton {
+    class Question {
+        +Question(String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption) : Constructor
+    }
+
+    class QuestionFactory {
+        +createQuestion(String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): Question
+    }
+    QuestionFactory ..> Question : dependency
+
+    class QuestionRepository {
+        +QuestionRepository(): private Constructor
+        +getInstance(): static synchronized method
+        +initalizeQuestions(): private method
+        +addScienceQuestions(): private method
+        +addHistoryQuestions(): private method
+        +addEntertainmentQuestions(): private method
+        +getScienceQuestions(): public method
+        +getHistoryQuestions(): public method
+        +getEntertainmentQuestions(): public method
+    }
+    QuestionRepository ..> Question : dependency
+    QuestionRepository ..> QuestionFactory : dependency
+}
+
+
+package QuizSceneFactory {
+    class EntertainmentCreator implements QuizSceneCreator {
+        constructScene(): method - returns EntertainmentQuiz
+    }
+    EntertainmentCreator ..> EntertainmentQuiz : dependency
+    EntertainmentCreator ..> QuizSceneInterface : dependency
+
+    class HistoryCreator implements QuizSceneCreator {
+        constructScene(): method
+    }
+    HistoryCreator ..> HistoryQuiz : dependency
+    HistoryCreator ..> QuizSceneInterface : dependency
+
+    class ScienceCreator implements QuizSceneCreator {
+        constructScene(): method - returns ScienceQuiz
+    }
+    ScienceCreator ..> ScienceQuiz : dependency
+    ScienceCreator ..> QuizSceneInterface : dependency
+
+    class EntertainmentQuiz implements QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption)
+    }
+    EntertainmentQuiz ..> Quiz : dependency
+    EntertainmentQuiz ..> Context : dependency
+    EntertainmentQuiz ..> PointModQuiz : dependency
+    EntertainmentQuiz ..> LessTimeQuiz : dependency
+    EntertainmentQuiz ..> JumbledQuiz : dependency
+    EntertainmentQuiz ..> GenericQuiz : dependency
+
+    class HistoryQuiz implements QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption)
+    }
+    HistoryQuiz ..> Quiz : dependency
+    HistoryQuiz ..> Context : dependency
+    HistoryQuiz ..> PointModQuiz : dependency
+    HistoryQuiz ..> LessTimeQuiz : dependency
+    HistoryQuiz ..> JumbledQuiz : dependency
+    HistoryQuiz ..> GenericQuiz : dependency
+
+    class ScienceQuiz implements QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption)
+    }
+    ScienceQuiz ..> Quiz : dependency
+    ScienceQuiz ..> Context : dependency
+    ScienceQuiz ..> PointModQuiz : dependency
+    ScienceQuiz ..> LessTimeQuiz : dependency
+    ScienceQuiz ..> JumbledQuiz : dependency
+    ScienceQuiz ..> GenericQuiz : dependency
+
+    class QuizSceneCreator implements JPanel {
+        +createScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): 
+        +constructScene(): abstract method
+    }
+    QuizSceneCreator ..> QuizSceneInterface : dependency
+
+    interface QuizSceneInterface {
+        +initalizeScene(int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption):
+    }
+    
+    
+}
+
+package QuizStrategy {
+    class Context {
+        +Context(Quiz strategy): Constructor
+        +setStrategy(Quiz strategy): method 
+        +executeStrategy(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): method
+    }
+    Context ..> Quiz : dependency
+
+    class GenericQuiz implements Quiz {
+        quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, string optionD, string correctOption): public method - constructs quiz scene.
+        createPanel(String category, int questionNum)
+        shuffleOptions(String... options)
+        createQuestionAndOptions(JPanel panel, String QuestionText, List<String> options)
+        createSubmitButton(JPanel panel, List<String> options, String category, String correctOption, int questionNum)
+        handleSubmitAction(List<String> options, String correctOption, int questionNum, JPanel panel)
+        findButtonGroup(Container container)
+        getSelectedOption(ButtonGroup group, Container container)
+        displayResultMessage(String selectedOption,  String correctOption,String category, int questionNum)
+        endGame(): void method
+    }
+    GenericQuiz ..> addScoreCommand : dependency
+    GenericQuiz ..> updateLastQuestionTimeCommand : dependency
+    GenericQuiz ..> Command : dependency
+
+
+    class JumbledQuiz implements Quiz {
+        quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, string optionD, string correctOption): public method - constructs quiz scene.
+        createPanel(String category, int questionNum)
+        shuffleOptions(String... options)
+        createQuestionAndOptions(JPanel panel, String QuestionText, List<String> options)
+        createSubmitButton(JPanel panel, List<String> options, String category, String correctOption, int questionNum)
+        handleSubmitAction(List<String> options, String correctOption, int questionNum, JPanel panel)
+        findButtonGroup(Container container)
+        getSelectedOption(ButtonGroup group, Container container)
+        displayResultMessage(String selectedOption,  String correctOption,String category, int questionNum)
+        endGame(): void method
+    }
+    JumbledQuiz ..> addScoreCommand : dependency
+    JumbledQuiz ..> updateLastQuestionTimeCommand : dependency
+    JumbledQuiz ..> Command : dependency
+
+    class LessTimeQuiz implements Quiz {
+        +quizConstructor(String, int, String, String, String, String, String, String): returns JPanel
+        +createPanel(String, int): returns JPanel
+        +shuffleOptions(String...): returns List
+        +createQuestionAndOptions(JPanel, String, List<String>): void method
+        +createSubmitButton(JPanel, List<String>, String, String, int): void method
+        +handleSubmitAction(List<String>, String, String, int, JPanel): void method
+        +findButtonGroup(Container): returns ButtonGroup
+        +getSelectedOptionIndex(ButtonGroup, Container): returns int
+        +displayResultMessage(String, String, String, int): void method
+        +endGame(): void method
+    }
+    LessTimeQuiz ..> addScoreLessTimeCommand : dependency
+    LessTimeQuiz ..> updateLastQuestionTimeCommand : dependency
+    LessTimeQuiz ..> Command : dependency
+
+    class PointModQuiz implements Quiz {
+        +quizConstructor(String, int, String, String, String, String, String, String): returns JPanel
+        +createPanel(String, int): returns JPanel
+        +shuffleOptions(String...): returns List
+        +createQuestionAndOptions(JPanel, String, List<String>): void method
+        +createSubmitButton(JPanel, List<String>, String, String, int): void method
+        +handleSubmitAction(List<String>, String, String, int, JPanel): void method
+        +findButtonGroup(Container): returns ButtonGroup
+        +getSelectedOptionIndex(ButtonGroup, Container): returns int
+        +displayResultMessage(String, String, String, int): void method
+        +endGame(): void method
+    }
+    PointModQuiz ..> addScoreHalfCommand : dependency
+    PointModQuiz ..> updateLastQuestionTimeCommand : dependency
+    PointModQuiz ..> Command : dependency
+
+    interface Quiz {
+        quizConstructor(String category, int questionNum, String questionText, String optionA, String optionB, String optionC, String optionD, String correctOption): construction method
+        createPanel(String category, int questionNum)
+        shuffleOptions(String... options): 
+        createQuestionAndOptions(JPanel panel, String questionText, List<String> options): void method
+        createSubmitButton(JPanel panel, List<String> options, String correctOption, String category, int questionNum): void method
+        handleSubmitAction(List<String> options, String correctOption, String category, int questionNum, JPanel panel): void method
+        findButtonGroup(Container container): 
+        getSelectedOptionIndex(ButtonGroup group, Container container): int method 
+        displayResultMessage(String selectedOption, String correctOption): void method
+        endGame(): void method
+    }
+}
+
+package ScoreCommand {
+    class AddScoreCommand implements Command {
+        +AddScoreCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    AddScoreCommand ..> ScoreReceiver : dependency
+
+    class AddScoreHalfCommand implements Command {
+        +AddScoreHalfCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    AddScoreHalfCommand ..> ScoreReceiver : dependency
+
+    class AddScoreLessTimeCommand implements Command {
+        +AddScoreLessTimeCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    AddScoreLessTimeCommand ..> ScoreReceiver : dependency
+
+    interface Command {
+        execute(): void method
+    }
+
+    class InitScoreCommand implements Command {
+        +InitScoreCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    InitScoreCommand ..> ScoreReceiver : dependency
+
+    class ScoreReceiver {
+        +initScore(): void method
+        +addScore(): void method
+        +addScoreHalf(): void method
+        +addScoreLessTime(): void method
+        +updateLastQuestionTime(): void method
+        +getScore(): returns int
+        +getTotalTime(): returns int
+    }
+
+    class UpdateLastQuestionTimeCommand implements Command {
+        +UpdateLastQuestionTimeCommand(ScoreReceiver scoreReceiver): Constructor
+        +execute(): void method
+    }
+    UpdateLastQuestionTimeCommand ..> ScoreReceiver : dependency
+}
+
+
+@enduml
+

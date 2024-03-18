@@ -1,0 +1,78 @@
+@startuml app_diagram
+
+package app {
+    class Application implements JPanel {
+        +Application(): Constructor
+        +showScene(String sceneName): static method
+        +addScene(JPanel scene, String sceneName): static method
+        +main(String[] args): static method
+    }
+    Application ..> MainMenu : dependency
+    Application ..> EntertainmentScene : dependency
+    Application ..> HistoryScene : dependency
+    Application ..> ScienceScene : dependency
+    Application ..> OptionScene : dependency
+    Application ..> LeaderboardScene : dependency
+    Application ..> GameScene : dependency
+    Application ..> Leaderboard : dependency
+    GameScene ..> MenuButton : dependency
+
+    class EntertainmentScene implements JPanel {
+        +EntertainmentScene(): Constructor
+    }
+    EntertainmentScene ..> MenuButton : dependency
+    EntertainmentScene ..> QuizConstructor : dependency
+    
+
+    class GameScene implements JPanel {
+        +GameScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+
+    class HistoryScene implements JPanel {
+        +HistoryScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+    HistoryScene ..> QuizConstructor : dependency
+
+    class MainMenu implements JPanel {
+        +MainMenu(JFrame frame): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+
+    class MenuButton implements JButton {
+        +MenuButton(String text, String sceneName): Constructor
+        +initButton(): private method
+    }
+    MenuButton ..> Application : dependency
+
+    class OptionScene implements JPanel {
+        +OptionScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+    OptionScene ..> LeaderboardScene : dependency
+
+
+    class QuizConstructor {
+        +buildQuiz(String category): static method
+    }
+    QuizConstructor ..> ScoreReceiver : dependency
+    QuizConstructor ..> QuestionRepository : dependency
+    QuizConstructor ..> Question : dependency
+    QuizConstructor ..> QuizSceneCreator : dependency
+    QuizConstructor ..> ScienceCreator : dependency
+    QuizConstructor ..> HistoryCreator : dependency
+    QuizConstructor ..> EntertainmentCreator : dependency
+    QuizConstructor ..> Command : dependency
+    QuizConstructor ..> InitScoreCommand : dependency
+    
+    
+
+    class ScienceScene implements JPanel {
+        +ScienceScene(): Constructor
+    }
+    GameScene ..> MenuButton : dependency
+    ScienceScene ..> QuizConstructor : dependency
+}
+
+@enduml
