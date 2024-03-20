@@ -5,7 +5,7 @@ Group Project COMP 3663 Software Engineering 2
 Github Repo Link: https://github.com/SkyJam99/Group-Project-SoftEng2.git
 
 Instructions for Running Application:
-1. Download spookyquiz-1.2.jar from Submission Folder
+1. Download spookyquiz-1.2.jar from Submission Folder and ensure that the folder is extracted (leaderboard tracking will not work if you don't extract the folder)
 2. Ensure you have the latest version of java installed
 3. Run spookyquiz-1.2.jar
 
