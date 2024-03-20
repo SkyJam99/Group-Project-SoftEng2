@@ -10,15 +10,15 @@ Instructions for Running Application:
 3. Run spookyquiz-1.2.jar
 
 Navigating Documentation
-- Bulk of documentation is in the Final Report
+- Bulk of documentation is in the Spooky Quiz Game Report
   - Including: System Description, Design Pattern Implementation details, Final Thoughts, UML Diagrams, Screenshots of Application
 - All code is commented (Class and Method comments)
   - Source code is in the Additional Resources folder, organized into packages
 - All UML Diagrams are included in the Additional resources
 
 Submission Folder Contents:
-- Spooky Quiz Game Report
-- Spooky Quiz Game Presentation
+- Spooky Quiz Game Report.pdf
+- Spooky Quiz Game Presentation.pdf
 - spookyquiz-1.2.jar
 - /Additional Resources
   - /Source Code  (Organized into packages)
